@@ -2,9 +2,10 @@
 an elearning website with recommender system
 ## DEV
 localhost:8000
+
 localhost:8000/admin
 
-#Install Django
+# Install Django
 `python -m pip`
 
 `pip install django`
@@ -12,10 +13,10 @@ localhost:8000/admin
 `python -m django --version`
 
 
-#Initial project
+# Initial project
 `django startproject e-learning`
 
-#run server
+# run server
 `python manage.py runserver`
 
 debug: true => will reload automatically
