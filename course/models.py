@@ -8,6 +8,9 @@ class Course(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.name + ',' + self.content
+
 
 class UserCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
