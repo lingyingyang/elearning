@@ -1,0 +1,15 @@
+{% extends "course/base.html" %}
+{% block content %}
+    {% for course in courses %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ course.author }}</a>
+              <small class="text-muted">{{ course.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ course.title }}</a></h2>
+            <p class="article-content">{{ course.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
