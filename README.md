@@ -3,6 +3,13 @@ an elearning website with recommender system
 ## DEV
 localhost:8000  
 localhost:8000/admin (admin/test1234)
+## Components
+1. list page of courses 课程页面展示
+2. detail page of course 课程列表展示
+3. info page of staff 老师基本信息
+4. info page of student 学生基本信息
+5. course progress of student 学生的课程进度
+6. course recommendation for student 学生的课程推荐
 
 # Install Django
 `python -m pip`  
