@@ -2,7 +2,10 @@
 an elearning website with recommender system
 ## DEV
 localhost:8000  
-localhost:8000/admin (admin/test1234)
+localhost:8000/admin  test account: admin/test1234  
+## Cloud - pythonanywhere
+http://lingyingyang.pythonanywhere.com/  
+http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234  
 ## Components
 1. list page of courses 课程页面展示
 2. detail page of course 课程列表展示
@@ -28,6 +31,6 @@ localhost:8000/admin (admin/test1234)
 ## Database ORM
 1. should add app into project's setting.py firstly
 2. update modules.py
-3. migrate models using commands as below
+3. migrate models using commands as below  
 `python manage.py makemigrations`  
 `python manage.py migrate`  
