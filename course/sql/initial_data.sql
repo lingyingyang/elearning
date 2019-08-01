@@ -1,12 +1,12 @@
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO "course_category" VALUES (1, 'IT/Computer Science', 0);
-INSERT INTO "course_category" VALUES (2, 'Nature Science', 0);
-INSERT INTO "course_category" VALUES (3, 'Humanities/Social Sciences', 0);
-INSERT INTO "course_category" VALUES (4, 'Business', 0);
-INSERT INTO "course_category" VALUES (5, 'Engineering/Technology', 0);
-INSERT INTO "course_category" VALUES (6, 'Medicine/Health', 0);
+INSERT INTO "course_category" VALUES (1, 'IT/Computer Science', NULL);
+INSERT INTO "course_category" VALUES (2, 'Nature Science', NULL);
+INSERT INTO "course_category" VALUES (3, 'Humanities/Social Sciences', NULL);
+INSERT INTO "course_category" VALUES (4, 'Business', NULL);
+INSERT INTO "course_category" VALUES (5, 'Engineering/Technology', NULL);
+INSERT INTO "course_category" VALUES (6, 'Medicine/Health', NULL);
 INSERT INTO "course_category" VALUES (8, 'Internet', 1);
 INSERT INTO "course_category" VALUES (9, 'Software', 1);
 INSERT INTO "course_category" VALUES (10, 'Hardware', 1);
@@ -41,4 +41,4 @@ INSERT INTO "course_category" VALUES (50, 'Clinical Medicine', 6);
 INSERT INTO "course_category" VALUES (53, 'Chinese Medicine', 6);
 INSERT INTO "course_category" VALUES (54, 'Pharmacy', 6);
 INSERT INTO "course_category" VALUES (55, 'Nursing', 6);
-INSERT INTO "course_category" VALUES (56, 'Test category', 0);
+INSERT INTO "course_category" VALUES (56, 'Test category', NULL);

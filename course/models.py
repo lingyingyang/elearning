@@ -20,4 +20,4 @@ class UserCourse(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=80)
-    parent = models.IntegerField(validators=[MaxValueValidator(80)])
+    parent = models.IntegerField(validators=[MaxValueValidator(80)], null=True, blank=True)
