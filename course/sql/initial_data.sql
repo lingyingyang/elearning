@@ -1,0 +1,44 @@
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+INSERT INTO "course_category" VALUES (1, 'IT/Computer Science', 0);
+INSERT INTO "course_category" VALUES (2, 'Nature Science', 0);
+INSERT INTO "course_category" VALUES (3, 'Humanities/Social Sciences', 0);
+INSERT INTO "course_category" VALUES (4, 'Business', 0);
+INSERT INTO "course_category" VALUES (5, 'Engineering/Technology', 0);
+INSERT INTO "course_category" VALUES (6, 'Medicine/Health', 0);
+INSERT INTO "course_category" VALUES (8, 'Internet', 1);
+INSERT INTO "course_category" VALUES (9, 'Software', 1);
+INSERT INTO "course_category" VALUES (10, 'Hardware', 1);
+INSERT INTO "course_category" VALUES (11, 'Business Intelligence', 1);
+INSERT INTO "course_category" VALUES (12, 'Mathmatics', 2);
+INSERT INTO "course_category" VALUES (13, 'Physics', 2);
+INSERT INTO "course_category" VALUES (14, 'Chemistry', 2);
+INSERT INTO "course_category" VALUES (15, 'biology', 2);
+INSERT INTO "course_category" VALUES (16, 'Astronomy', 2);
+INSERT INTO "course_category" VALUES (17, 'Geography', 2);
+INSERT INTO "course_category" VALUES (18, 'Law', 3);
+INSERT INTO "course_category" VALUES (20, 'Media', 3);
+INSERT INTO "course_category" VALUES (21, 'Design', 3);
+INSERT INTO "course_category" VALUES (22, 'Art', 3);
+INSERT INTO "course_category" VALUES (23, 'Education', 3);
+INSERT INTO "course_category" VALUES (24, 'Psychology', 3);
+INSERT INTO "course_category" VALUES (27, 'Philosophy', 3);
+INSERT INTO "course_category" VALUES (28, 'History', 3);
+INSERT INTO "course_category" VALUES (30, 'Economy', 4);
+INSERT INTO "course_category" VALUES (31, 'Marketing', 4);
+INSERT INTO "course_category" VALUES (32, 'Finance', 4);
+INSERT INTO "course_category" VALUES (33, 'Human Resource', 4);
+INSERT INTO "course_category" VALUES (34, 'Accounting', 4);
+INSERT INTO "course_category" VALUES (35, 'Management', 4);
+INSERT INTO "course_category" VALUES (38, 'Electron', 5);
+INSERT INTO "course_category" VALUES (39, 'Civil Engineering', 5);
+INSERT INTO "course_category" VALUES (40, 'Urban Planning', 5);
+INSERT INTO "course_category" VALUES (41, 'Environment Sciences', 5);
+INSERT INTO "course_category" VALUES (43, 'Communication and Transportation', 5);
+INSERT INTO "course_category" VALUES (48, 'Material Science', 5);
+INSERT INTO "course_category" VALUES (50, 'Clinical Medicine', 6);
+INSERT INTO "course_category" VALUES (53, 'Chinese Medicine', 6);
+INSERT INTO "course_category" VALUES (54, 'Pharmacy', 6);
+INSERT INTO "course_category" VALUES (55, 'Nursing', 6);
+INSERT INTO "course_category" VALUES (56, 'Test category', 0);

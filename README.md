@@ -25,12 +25,21 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 ## run server
 `python manage.py runserver`  
  - debug: true => will reload automatically
-## Admin Page
-`python manage.py migrate`  
-`python manage.py createsuperuser`
 ## Database ORM
 1. should add app into project's setting.py firstly
 2. update modules.py
 3. migrate models using commands as below  
 `python manage.py makemigrations`  
 `python manage.py migrate`  
+### Admin Page
+`python manage.py migrate`  
+`python manage.py createsuperuser`
+### Migrate to PostgreSQL - ElephantSQL
+1. install `python -m pip install psycopg2`
+2. migration `python manage.py migrate`
+3. create admin superuser  
+### Populating SQL script into a migration step
+1. create relevant models
+1. `python manage.py makemigrations --name inital_data --empty course`
+2. add load_data_from_sql  
+3. `python manage.py migrate course`
