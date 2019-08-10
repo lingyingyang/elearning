@@ -75,19 +75,19 @@ WSGI_APPLICATION = 'elearning.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'vuxzcftq',
-    #     'USER': 'vuxzcftq',
-    #     'PASSWORD': '2JZNd06QkOj-QrnBl-YnZV7dA8VQOcXc',
-    #     'HOST': 'rosie.db.elephantsql.com',
-    #     'PORT': '5432'
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vuxzcftq',
+        'USER': 'vuxzcftq',
+        'PASSWORD': '2JZNd06QkOj-QrnBl-YnZV7dA8VQOcXc',
+        'HOST': 'rosie.db.elephantsql.com',
+        'PORT': '5432'
+    }
 }
 
 

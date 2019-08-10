@@ -39,7 +39,12 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 2. migration `python manage.py migrate`
 3. create admin superuser  
 ### Populating SQL script into a migration step
+#### Method 1
 1. create relevant models
-1. `python manage.py makemigrations --name inital_data --empty course`
-2. add load_data_from_sql  
-3. `python manage.py migrate course`
+2. `python manage.py makemigrations --name inital_data --empty course`
+3. add load_data_from_sql  
+4. `python manage.py migrate course`
+#### Method 2
+1. Use the given SQL script to populate models and data [Linked to solution](https://stackoverflow.com/questions/46708521/django-use-the-given-sql-dump-to-create-the-other-models-and-to-populate-the-d?noredirect=1&lq=1)
+2. connect to the database
+3. `python manage.py inspectdb > models.py`

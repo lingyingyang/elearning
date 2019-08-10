@@ -17,21 +17,25 @@ def load_data_from_sql(filename):
                     continue
                 else:
                     raise SyntaxError('Your usage of DELIMITER is not correct, go and fix it!')
-            statement += line # add lines while not met lines with current delimiter
+            statement += line  # add lines while not met lines with current delimiter
             if line.endswith(delimiter):
+                # found delimiter, add dash symbols (or any symbols you want) for
+                # converting MySQL statements with multiply delimiters in SQL statement
                 if delimiter != ';\n':
-                    statement = statement.replace(';', '; --').replace(delimiter,
-                                                                       ';')  # found delimiter, add dash symbols (or any symbols you want) for converting MySQL statements with multiply delimiters in SQL statement
+                    statement = statement.replace(';', '; --').replace(delimiter, ';')
                 c.execute(statement)  # execute current statement
                 statement = ''  # begin collect next statement
 
 
-class Migration(migrations.Migration):
+def unload_data_from_sql():
+    """Please delete dumping data"""
 
+
+class Migration(migrations.Migration):
     dependencies = [
         ('course', '0001_initial'),
     ]
 
     operations = [
-        migrations.RunPython(load_data_from_sql('initial_data.sql')),
+        migrations.RunPython(load_data_from_sql('initial_data.sql'), reverse_code=unload_data_from_sql),
     ]
