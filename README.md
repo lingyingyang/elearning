@@ -14,9 +14,10 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 5. course progress of student 学生的课程进度
 6. course recommendation for student 学生的课程推荐
 
-# Install Django
-`python -m pip`  
-`pip install django`  
+# Install Django 
+`python -m pip list`  
+`python -m pip install django`  
+`python -m pip install pandas`  
 `python -m django --version`
 ## Initial project
 `django startproject e-learning`

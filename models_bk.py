@@ -149,15 +149,7 @@ class Category(models.Model):
         db_table = 'category'
 
 
-class Course(models.Model):
-    name = models.CharField(max_length=80, blank=True, null=True)
-    course_describtion = models.TextField(blank=True, null=True)
-    faculty = models.ForeignKey('Faculty', models.DO_NOTHING, db_column='faculty', blank=True, null=True)
-    category = models.IntegerField(blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'course'
 
 
 class CourseCourse(models.Model):

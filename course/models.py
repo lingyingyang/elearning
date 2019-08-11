@@ -23,14 +23,24 @@ class Assignment(models.Model):
         return f'Assignment {self.id} due_data {self.due_date}'
 
 
-# Course Section
-class Course(models.Model):
-    name = models.CharField(max_length=100)
-    content = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now)
+class Faculty(models.Model):
+    name = models.CharField(max_length=80, blank=True, null=True)
+    faculty_describtion = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.name + ',' + self.content
+    class Meta:
+        managed = False
+        db_table = 'faculty'
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=80, blank=True, null=True)
+    course_describtion = models.TextField(blank=True, null=True)
+    faculty = models.ForeignKey('Faculty', models.DO_NOTHING, db_column='faculty', blank=True, null=True)
+    category = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'course'
 
 
 class UserCourse(models.Model):
@@ -39,8 +49,21 @@ class UserCourse(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=80)
-    parent = models.IntegerField(validators=[MaxValueValidator(80)], null=True, blank=True)
+    name = models.CharField(max_length=80, blank=True, null=True)
+    parent = models.ForeignKey('self', models.DO_NOTHING, db_column='parent', blank=True, null=True)
 
-    def __str__(self):
-        return self.name
+    class Meta:
+        managed = False
+        db_table = 'category'
+
+
+class Subject(models.Model):
+    name = models.CharField(max_length=80, blank=True, null=True)
+    category = models.ForeignKey(Category, models.DO_NOTHING, db_column='category', blank=True, null=True)
+    thumb = models.CharField(max_length=100, blank=True, null=True)
+    pic = models.CharField(max_length=200, blank=True, null=True)
+    description = models.CharField(max_length=1000, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'subject'
