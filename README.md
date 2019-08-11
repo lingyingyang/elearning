@@ -27,7 +27,7 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 `python -m django startapp course`
 ## run server
 `python manage.py runserver`  
- - debug: true => will reload automatically
+- debug: true => will reload automatically
 ## Database ORM
 1. should add app into project's setting.py firstly
 2. update modules.py
@@ -51,3 +51,8 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 1. Use the given SQL script to populate models and data [Linked to solution](https://stackoverflow.com/questions/46708521/django-use-the-given-sql-dump-to-create-the-other-models-and-to-populate-the-d?noredirect=1&lq=1)
 2. connect to the database
 3. `python manage.py inspectdb > models.py`
+# Content-based filtering algorithm
+API: http://localhost:8000/cbtest/0/   
+- 0 = subject id
+- result = a list of recommender subject based on this subject id in a similarity order
+

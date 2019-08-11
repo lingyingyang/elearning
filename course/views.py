@@ -21,8 +21,7 @@ def about(request):
     return HttpResponse('<h1>About</h1>')
 
 
-def cbtest(request):
-    # data = list(Subject.objects.values())
+def cbtest(request, subject):
     df = DataFrame(list(Subject.objects.values('name', 'category')))
 
     df['key_words'] = df['name'] + ' ' + df['category'].map(str)
@@ -35,18 +34,17 @@ def cbtest(request):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     print("=====================cosine_sim======================")
     print(cosine_sim)
-    rd = recommendations(0, df, cosine_sim)
+    rd_list = recommendations(subject, df, cosine_sim)
     print("=====================rd======================")
-    print(rd)
+    print(rd_list)
 
-    # df['key_words'] = ""
-    # for index, row in df.iterrows()
-    #     desc = row['description']
-    #     rake = Rake()
+    context = list(Subject.objects.filter(pk__in=rd_list).values())
+    context.sort(key=lambda t: rd_list.index(t['id']))
+    # print("=====================context======================")
+    # print(context)
 
-    # print(df.head())
-    return HttpResponse("Hello World")
-    # return JsonResponse(data, safe=False)
+    # return HttpResponse('<h1>Hello</h1>')
+    return JsonResponse(context, safe=False)
 
 
 #  defining the function that takes in movie title
