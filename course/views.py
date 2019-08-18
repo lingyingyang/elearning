@@ -10,11 +10,14 @@ import numpy as np
 import pandas as pd
 
 
+# def home(request):
+#     context = {
+#         'courses': Course.objects.all()
+#     }
+#     return render(request, 'course/home.html', context)
 def home(request):
-    context = {
-        'courses': Course.objects.all()
-    }
-    return render(request, 'course/home.html', context)
+    return render(request,'index.html')
+
 
 
 def about(request):
