@@ -55,4 +55,6 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 API: http://localhost:8000/cbtest/0/   
 - 0 = subject id
 - result = a list of recommender subject based on this subject id in a similarity order
+# Frontend Procedure
+1. change all references of js, css, jpg, png to Django style, such as `<link rel="stylesheet" href="css/slick.css">` change to `<link rel="stylesheet" href="{% static 'css/slick.css' %}">`  
 
