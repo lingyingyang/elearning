@@ -1,5 +1,5 @@
 # elearning
-an elearning website with recommender system
+an elearning website with recommender system.
 ## DEV
 localhost:8000  
 localhost:8000/admin  test account: admin/test1234  
