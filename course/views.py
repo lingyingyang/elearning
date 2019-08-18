@@ -16,8 +16,11 @@ import pandas as pd
 #     }
 #     return render(request, 'course/home.html', context)
 def home(request):
-    return render(request,'index.html')
+    return render(request, 'index.html')
 
+
+def courses(request):
+    return render(request, 'courses.html')
 
 
 def about(request):
