@@ -20,7 +20,14 @@ def home(request):
 
 
 def courses(request):
-    return render(request, 'courses.html')
+    subjectId = 0
+    context = {
+        'courses': get_from_cb_by_subjectId(subjectId)
+    }
+
+    print(context)
+
+    return render(request, 'courses.html', context)
 
 
 def about(request):
@@ -28,6 +35,13 @@ def about(request):
 
 
 def cbtest(request, subject):
+    context = get_from_cb_by_subjectId(subject)
+
+    # return HttpResponse('<h1>Hello</h1>')
+    return JsonResponse(context, safe=False)
+
+
+def get_from_cb_by_subjectId(subjectId):
     df = DataFrame(list(Subject.objects.values('name', 'category')))
 
     df['key_words'] = df['name'] + ' ' + df['category'].map(str)
@@ -40,7 +54,7 @@ def cbtest(request, subject):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     print("=====================cosine_sim======================")
     print(cosine_sim)
-    rd_list = recommendations(subject, df, cosine_sim)
+    rd_list = recommendations(subjectId, df, cosine_sim)
     print("=====================rd======================")
     print(rd_list)
 
@@ -49,8 +63,7 @@ def cbtest(request, subject):
     # print("=====================context======================")
     # print(context)
 
-    # return HttpResponse('<h1>Hello</h1>')
-    return JsonResponse(context, safe=False)
+    return context
 
 
 #  defining the function that takes in movie title
@@ -71,7 +84,8 @@ def recommendations(subjectID, df, cosine_sim):
     print(score_series)
 
     # getting the indexes of the 10 most similar movies
-    top_10_indexes = list(score_series.iloc[1:11].index)
+    # top_10_indexes = list(score_series.iloc[1:11].index)
+    top_10_indexes = list(score_series.iloc[1:7].index)
 
     # populating the list with the titles of the best 10 matching movies
     for i in top_10_indexes:

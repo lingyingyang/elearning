@@ -52,7 +52,7 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 2. connect to the database
 3. `python manage.py inspectdb > models.py`
 # Content-based filtering algorithm
-API: http://localhost:8000/cbtest/0/   
+API: http://127.0.0.1:8000/cbtest/0   
 - 0 = subject id
 - result = a list of recommender subject based on this subject id in a similarity order
 # Frontend Procedure
