@@ -41,6 +41,9 @@ class Course(models.Model):
     class Meta:
         managed = False
         db_table = 'course'
+    
+    def __str__(self):
+        return f'Course {self.id} | Name: {self.name}'
 
 
 class UserCourse(models.Model):
@@ -67,3 +70,6 @@ class Subject(models.Model):
     class Meta:
         managed = False
         db_table = 'subject'
+
+    def __str__(self):
+        return f'Subject {self.id} | Name: {self.name}'
