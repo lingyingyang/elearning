@@ -17,14 +17,11 @@ def courses(request):
     context = {
         'courses': get_from_cb_by_subjectId(subjectId)
     }
-
-    print(context)
-
     return render(request, 'courses.html', context)
 
 
 def about(request):
-    return HttpResponse('<h1>About</h1>')
+    return render(request, 'about.html')
 
 
 def cbtest(request, subject):
