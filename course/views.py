@@ -23,6 +23,8 @@ def courses(request):
 def about(request):
     return render(request, 'about.html')
 
+def courseSingle(request):
+    return render(request, 'courses-single.html');
 
 def cbtest(request, subject):
     context = get_from_cb_by_subjectId(subject)
