@@ -20,6 +20,7 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 `python -m pip install pandas`  
 `python -m pip install python-rake`  
 `python -m pip install scikit-learn`  
+`python -m pip install psycopg2`  
 `python -m django --version`
 ## Initial project
 `django startproject e-learning`
