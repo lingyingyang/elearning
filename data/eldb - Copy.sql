@@ -356,6 +356,13 @@ CREATE TABLE "account" (
 alter table "account" add "user_id" int4;
 update "account" set "user_id" = 2;
 
+-- 249 250
+-- id	password	last_login	is_superuser	username	first_name	last_name	email	is_staff	is_active	date_joined
+insert into "auth_user" Values (3, 'test1234', '2019-08-01 06:14:00.742000000', false, 'test1', 'test', '1', 'test1@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
+delete from "auth_user" where id = 3;
+update "auth_user" set id = 249 where id = 1;
+update "auth_user" set id = 250 where id = 2;
+
 -- ----------------------------
 -- Records of account
 -- ----------------------------
