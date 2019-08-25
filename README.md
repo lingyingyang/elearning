@@ -45,8 +45,6 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234@
 API: http://127.0.0.1:8000/cbtest/0   
 - 0 = subject id
 - result = a list of recommender subject based on this subject id in a similarity order
-# Frontend Procedure
-1. change all references of js, css, jpg, png to Django style, such as `<link rel="stylesheet" href="css/slick.css">` change to `<link rel="stylesheet" href="{% static 'css/slick.css' %}">`
 # Issues
 ## Populating SQL script into a migration step
 ### Method 1
@@ -58,6 +56,3 @@ API: http://127.0.0.1:8000/cbtest/0
 1. Use the given SQL script to populate models and data [Linked to solution](https://stackoverflow.com/questions/46708521/django-use-the-given-sql-dump-to-create-the-other-models-and-to-populate-the-d?noredirect=1&lq=1)
 2. connect to the database
 3. `python manage.py inspectdb > models.py`
-## one-to-one model link account with auth_user
-- use a tricky method - only use auth_user to authentication, other info use account  
-
