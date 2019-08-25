@@ -356,7 +356,6 @@ CREATE TABLE "account" (
 alter table "account" add "user_id" int4;
 update "account" set "user_id" = 2;
 
--- 249 250
 -- id	password	last_login	is_superuser	username	first_name	last_name	email	is_staff	is_active	date_joined
 insert into "auth_user" Values (1 , 'test1234', '2019-08-01 06:14:00.742000000', false, 'yiliang', 'test', '1', 'test1@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (2 , 'test1234', '2019-08-01 06:14:00.742000000', false, 'yangshi', 'test', '1', 'test2@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -367,7 +366,6 @@ insert into "auth_user" Values (6 , 'test1234', '2019-08-01 06:14:00.742000000',
 insert into "auth_user" Values (7 , 'test1234', '2019-08-01 06:14:00.742000000', false, 'ting', 'test', '1', 'test7@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (8 , 'test1234', '2019-08-01 06:14:00.742000000', false, 'ashe', 'test', '1', 'test8@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (9 , 'test1234', '2019-08-01 06:14:00.742000000', false, 'hill', 'test', '1', 'test9@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (10, 'test1234', '2019-08-01 06:14:00.742000000', false, 'annie', 'test', '1', 'test10@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (11, 'test1234', '2019-08-01 06:14:00.742000000', false, 'varus', 'test', '1', 'test11@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (12, 'test1234', '2019-08-01 06:14:00.742000000', false, 'darius', 'test', '1', 'test12@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -388,8 +386,7 @@ insert into "auth_user" Values (26, 'test1234', '2019-08-01 06:14:00.742000000',
 insert into "auth_user" Values (27, 'test1234', '2019-08-01 06:14:00.742000000', false, 'garen', 'test', '1', 'test27@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (28, 'test1234', '2019-08-01 06:14:00.742000000', false, 'diana', 'test', '1', 'test28@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (29, 'test1234', '2019-08-01 06:14:00.742000000', false, 'brand', 'test', '1', 'test29@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-insert into "auth_user" Values (30, 'test1234', '2019-08-01 06:14:00.742000000', false, 'admin', 'test', '1', 'test30@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
+insert into "auth_user" Values (30, 'test1234', '2019-08-01 06:14:00.742000000', true, 'admin', 'test', '1', 'test30@test.com', true, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (31, 'test1234', '2019-08-01 06:14:00.742000000', false, 'xxx', 'test', '1', 'test31@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (32, 'test1234', '2019-08-01 06:14:00.742000000', false, 'test1', 'test', '1', 'test32@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (33, 'test1234', '2019-08-01 06:14:00.742000000', false, 'test2', 'test', '1', 'test33@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -411,7 +408,6 @@ insert into "auth_user" Values (48, 'test1234', '2019-08-01 06:14:00.742000000',
 insert into "auth_user" Values (49, 'test1234', '2019-08-01 06:14:00.742000000', false,  'n', 'test', '1', 'test49@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (50, 'test1234', '2019-08-01 06:14:00.742000000', false,  'Kay A. Robbins, Steven Robbins', 'test', '1', 'test50@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (51, 'test1234', '2019-08-01 06:14:00.742000000', false,  'Kenneth C. Mansfield, Jr., James L. Antonakos', 'test', '1', 'test51@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (52, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Carlo Zaniolo', 'test', '1', 'test52@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (53, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Vicki L. Sauter', 'test', '1', 'test53@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (54, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Max Bramer', 'test', '1', 'test54@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -432,9 +428,6 @@ insert into "auth_user" Values (68, 'test1234', '2019-08-01 06:14:00.742000000',
 insert into "auth_user" Values (69, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Alan Price', 'test', '1', 'test69@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (70, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Philippe Lasserre', 'test', '1', 'test70@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (71, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Professor Robert A Paton, James McCalman', 'test', '1', 'test71@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-iert into "auth_user" Values (72, 'test1234', '2019-08-01 06:14:00.742000000', false, 'test72', 'test', '1', 'test72@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
-
 insert into "auth_user" Values (72, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Mary Connor, Julia Pokora', 'test', '1', 'test72@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (73, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Colin Gale, Jasbir Kaur', 'test', '1', 'test73@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (74, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Kenneth L. Smith, Sandra Moriarty, Keith Kenney, Gretchen Barbatsis', 'test', '1', 'test74@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -456,7 +449,6 @@ insert into "auth_user" Values (89, 'test1234', '2019-08-01 06:14:00.742000000',
 insert into "auth_user" Values (90, 'test1234', '2019-08-01 06:14:00.742000000', false, 'David James Holme, Hazel Peck', 'test', '1', 'test90@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (91, 'test1234', '2019-08-01 06:14:00.742000000', false, 'N. Jayabalan', 'test', '1', 'test91@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (92, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Shang-Tian Yang', 'test', '1', 'test92@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (93, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Zamir Punja', 'test', '1', 'test93@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (94, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Rafael Fernandez-Botran, Vaclav Vetvicka', 'test', '1', 'test94@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (95, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Sergei Tretyakov', 'test', '1', 'test95@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -478,7 +470,6 @@ insert into "auth_user" Values (110, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (111, 'test1234', '2019-08-01 06:14:00.742000000', false,'Daniel A. Laprès', 'test', '1', 'test111@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (112, 'test1234', '2019-08-01 06:14:00.742000000', false,'Geoff Monahan, Lisa Young', 'test', '1', 'test112@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (113, 'test1234', '2019-08-01 06:14:00.742000000', false,'Julian Petley', 'test', '1', 'test113@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (114, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Henry Lee Ewbank, Sherman Paxton Lawton', 'test', '1', 'test114@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (115, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Joe Sacco', 'test', '1', 'test115@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (116, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Nick Stevenson', 'test', '1', 'test116@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -500,7 +491,6 @@ insert into "auth_user" Values (131, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (132, 'test1234', '2019-08-01 06:14:00.742000000', false, 'an Jukes, Ted McCain, Lee Crockett', 'test', '1', 'test132@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (133, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Paul Crowther', 'test', '1', 'test133@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (134, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Curriculum Corporation', 'test', '1', 'test134@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (135, 'test1234', '2019-08-01 06:14:00.742000000', false, 'S. K. Mangal,', 'test', '1', 'test135@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (136, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Cherie Goodenow O''boyle', 'test', '1', 'test136@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (137, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Anne Myers, Christine H. Hansen', 'test', '1', 'test137@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -522,7 +512,6 @@ insert into "auth_user" Values (152, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (153, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Paul A. Cohen', 'test', '1', 'test153@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (154, 'test1234', '2019-08-01 06:14:00.742000000', false, 'John Sloman, Kevin Hinde', 'test', '1', 'test154@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (155, 'test1234', '2019-08-01 06:14:00.742000000', false, 'John Sloman, Kevin Hinde, Dean Garratt', 'test', '1', 'test155@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (156, 'test1234', '2019-08-01 06:14:00.742000000', false, 'David Ray Anderson', 'test', '1', 'test156@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (157, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Jan Tinbergen', 'test', '1', 'test157@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (158, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Hans Wiesmeth', 'test', '1', 'test158@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -544,8 +533,6 @@ insert into "auth_user" Values (173, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (174, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Anthony Saunders, Marcia Millon Cornett', 'test', '1', 'test174@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (175, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Moorad Choudhry', 'test', '1', 'test175@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (176, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Ved Prakash', 'test', '1', 'test176@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
-
 insert into "auth_user" Values (177, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Henry R. Cheeseman', 'test', '1', 'test177@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (178, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Charles H. Gibson', 'test', '1', 'test178@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (179, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Jae K. Shim, Joel G. Siegel', 'test', '1', 'test179@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -560,16 +547,13 @@ insert into "auth_user" Values (187, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (188, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Oliver. Bailey', 'test', '1', 'test188@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (189, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Branislav Jovic', 'test', '1', 'test189@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (190, 'test1234', '2019-08-01 06:14:00.742000000', false, 'William J. Dally, John W. Poulton', 'test', '1', 'test190@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-insert into "auth_user" Values (191, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Mike E. Miles, Gayle Berens, Marc Allan Weiss', Urban Land Institute, 'test', '1', 'test191@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
+insert into "auth_user" Values (191, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Mike E. Miles, Gayle Berens, Marc Allan Weiss, Urban Land Institute', 'test', '1', 'test191@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (192, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Stephen Maxwell Wheeler, Timothy Beatley', 'test', '1', 'test192@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (193, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Zada Lipman, Nicola Franklin', 'test', '1', 'test193@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (194, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Jan S. Krouwer', 'test', '1', 'test194@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (195, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Ron Kasprisin', 'test', '1', 'test195@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (196, 'test1234', '2019-08-01 06:14:00.742000000', false, 'David Adams, Craig Watkins', 'test', '1', 'test196@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (197, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Peter Nijkamp, Edwin Smith Mills, Paul C. Cheshire', 'test', '1', 'test197@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
-
-
 insert into "auth_user" Values (198, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Guy Bessette', 'test', '1', 'test198@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (199, 'test1234', '2019-08-01 06:14:00.742000000', false, '	Robert Ferrier, Alan Jenkins', 'test', '1', 'test199@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (200, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Anthony R. E. Sinclair, John M. Fryxell, Graeme Caughley', 'test', '1', 'test200@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -591,8 +575,6 @@ insert into "auth_user" Values (215, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (216, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Ben R. Finney, Eric M. Jones', 'test', '1', 'test216@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (217, 'test1234', '2019-08-01 06:14:00.742000000', false, 'James M. Gere, Barry J. Goodno', 'test', '1', 'test217@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (218, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Jesus A. Del Alamo', 'test', '1', 'test218@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
-
 insert into "auth_user" Values (219, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Nicola A. Spaldin', 'test', '1', 'test219@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (220, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Roger Evans, Roger Evans (MRCP.), Patrick Durston', 'test', '1', 'test220@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (221, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Avi Shai, Howard I. Maibach', 'test', '1', 'test221@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -614,7 +596,6 @@ insert into "auth_user" Values (236, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (237, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Janet Houser, Kathleen Oman', 'test', '1', 'test237@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (238, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Valorie A. Crooks, Gavin J. Andrews', 'test', '1', 'test238@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (239, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Judith C. Ahronheim, M.D., Jonathan Moreno, Connie Zuckerman', 'test', '1', 'test239@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
-
 insert into "auth_user" Values (240, 'test1234', '2019-08-01 06:14:00.742000000', false, 'M. D. C. P. Li', 'test', '1', 'test240@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (241, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Elizabeth J. Perry, Mark Selden', 'test', '1', 'test241@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (242, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Giovanni Maciocia', 'test', '1', 'test242@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
@@ -625,9 +606,6 @@ insert into "auth_user" Values (246, 'test1234', '2019-08-01 06:14:00.742000000'
 insert into "auth_user" Values (247, 'test1234', '2019-08-01 06:14:00.742000000', false, 'David Hartmann', 'test', '1', 'test247@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 insert into "auth_user" Values (248, 'test1234', '2019-08-01 06:14:00.742000000', false, 'Inder S. Anand, Naranjan S. Dhalla, Purshotam L', 'test', '1', 'test248@test.com', false, true, 	'2019-08-01 06:14:00.742000000');
 
-
-update "auth_user" set id = 249 where id = 1;
-update "auth_user" set id = 250 where id = 2;
 
 -- ----------------------------
 -- Records of account
