@@ -5,28 +5,33 @@ from .services import *
 
 
 def home(request):
-    return render(request, 'index.html')
+    context = { 'home_page': 'active' }
+    return render(request, 'index.html', context)
 
 
 def courses(request):
     subjectId = 0
     context = {
+        'courses_page': 'active',
         'courses': get_from_cb_by_subjectId(subjectId)
     }
     return render(request, 'courses.html', context)
 
 
 def about(request):
-    return render(request, 'about.html')
+    context = { 'about_page': 'active' }
+    return render(request, 'about.html', context)
 
 
 def courseSingle(request):
-    return render(request, 'courses-single.html')
+    context = { 'courses_page': 'active' }
+    return render(request, 'courses-single.html', context)
 
 
 @login_required
 def courseProgress(request):
-    return render(request, 'courses-progress.html')
+    context = { 'courses_progress_page': 'active' }
+    return render(request, 'courses-progress.html', context)
 
 
 def cbtest(request, subject):

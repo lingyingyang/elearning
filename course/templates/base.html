@@ -132,15 +132,17 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="active" href="{% url 'course-home' %}">Home</a>
+                                        <a class="{{ home_page }}" href="{% url 'course-home' %}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'course-about' %}">About</a>
+                                        <a class="{{ about_page }}" href="{% url 'course-about' %}">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'course-courses' %}">Courses</a>
+                                        <a class="{{ courses_progress_page }}" href="{% url 'course-progress' %}">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="{{ courses_page }}" href="{% url 'course-courses' %}">Courses</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'course-progress' %}">My Progress</a></li>
                                             <li><a href="{% url 'course-courses' %}">Courses</a></li>
                                             <li><a href="{% url 'course-single' %}">Course Single</a></li>
                                         </ul>
