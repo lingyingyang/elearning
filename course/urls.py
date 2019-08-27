@@ -7,5 +7,4 @@ urlpatterns = [
     path('courses/', views.courses, name='course-courses'),
     path('cbtest/<int:subject>', views.cbtest, name='cb-test'),
     path('courseSingle/', views.courseSingle, name='course-single'),
-    path('login/', views.login, name='course-login'),
 ]

@@ -22,9 +22,10 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234@
 `python -m pip install psycopg2`  
 `python -m django --version`
 ## Initial project
-`django startproject e-learning`
+`django startproject elearning`
 ## Initial Application
-`python -m django startapp course`
+- course component `python -m django startapp course`
+- users component `python -m django startapp users`
 ## run server
 `python manage.py runserver`  
 - debug: true => will reload automatically

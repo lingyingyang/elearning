@@ -1,23 +1,7 @@
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
-
-
-# User Section
-# a tricky method - only use auth_user to authentication, other info use account
-class Account(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(unique=True, max_length=80)
-    role = models.CharField(max_length=80)
-
-    class Meta:
-        managed = False
-        db_table = 'account'
-
-    def __str__(self):
-        return f'{self.username} Profile'
-        # return f'{self.user.username} Profile'
+from users.models import Account
 
 
 class Lecturer(models.Model):
@@ -61,11 +45,6 @@ class Course(models.Model):
     
     def __str__(self):
         return f'Course {self.id} | Name: {self.name}'
-
-
-class UserCourse(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
 
 class Category(models.Model):

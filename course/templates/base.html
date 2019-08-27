@@ -95,10 +95,17 @@
                                 </ul>
                             </div> <!-- social -->
                             <div class="login-register">
+                                {% if user.is_authenticated %}
                                 <ul>
-                                    <li><a href="{% url 'course-login' %}">Login</a></li>
-                                    <li><a href="{% url 'course-login' %}">Register</a></li>
+                                    <li><a href="{% url 'users-login' %}">Profile</a></li>
+                                    <li><a href="{% url 'users-logout' %}">Logout</a></li>
                                 </ul>
+                                {% else %}
+                                <ul>
+                                    <li><a href="{% url 'users-login' %}">Login</a></li>
+                                    <li><a href="{% url 'users-login' %}">Register</a></li>
+                                </ul>
+                                {% endif %}
                             </div>
                         </div> <!-- header right -->
                     </div>
