@@ -131,3 +131,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'course-home'
+LOGIN_URL = 'users-login'
