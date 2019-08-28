@@ -97,7 +97,7 @@
                             <div class="login-register">
                                 {% if user.is_authenticated %}
                                 <ul>
-                                    <li><a href="{% url 'users-login' %}">Profile</a></li>
+                                    <li><a href="{% url 'users-profile' %}">{{ user.username }}</a></li>
                                     <li><a href="{% url 'users-logout' %}">Logout</a></li>
                                 </ul>
                                 {% else %}

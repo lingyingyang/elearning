@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ user.username }}'s Profile</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'course-home' %}">Return to Home</a>
+        </small>
+    </div>
+{% endblock content %}
