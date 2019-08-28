@@ -1,27 +1,6 @@
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.utils import timezone
-from users.models import Account
-
-
-class Lecturer(models.Model):
-    name = models.CharField(max_length=80, blank=True, null=True)
-    account = models.ForeignKey(Account, models.DO_NOTHING, db_column='account', blank=True, null=True)
-    email = models.CharField(max_length=80, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'lecturer'
-
-
-class Assignment(models.Model):
-    due_date = models.DateField(default=timezone.now)
-    assignment_task = models.TextField()
-    lesson = models.SmallIntegerField()
-    type = models.SmallIntegerField()
-
-    def __str__(self):
-        return f'Assignment {self.id} due_data {self.due_date}'
 
 
 class Faculty(models.Model):
@@ -31,6 +10,9 @@ class Faculty(models.Model):
     class Meta:
         managed = False
         db_table = 'faculty'
+
+    def __str__(self):
+        return f'Faculty {self.name}'
 
 
 class Course(models.Model):
@@ -55,6 +37,8 @@ class Category(models.Model):
         managed = False
         db_table = 'category'
 
+    def __str__(self):
+        return f'Category {self.name}'
 
 class Subject(models.Model):
     name = models.CharField(max_length=80, blank=True, null=True)
