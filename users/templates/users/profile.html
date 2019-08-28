@@ -2,6 +2,12 @@
 {% block content %}
     <h2>{{ user.username }}'s Profile</h2>
     <div class="border-top pt-3">
+        <ul>
+            <li>username: {{ user.username }}</li>
+            <li>email: {{ user.email }}</li>
+            <li>first name: {{ user.first_name }}</li>
+            <li>last name: {{ user.last_name }}</li>
+        </ul>
         <small class="text-muted">
             <a href="{% url 'course-home' %}">Return to Home</a>
         </small>
