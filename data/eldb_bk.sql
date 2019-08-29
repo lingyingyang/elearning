@@ -8093,7 +8093,7 @@ ALTER TABLE "lecture_note" ADD CONSTRAINT "lecture_note_lesson_fkey" FOREIGN KEY
 -- ----------------------------
 -- Foreign Keys structure for table lecturer
 -- ----------------------------
-ALTER TABLE "lecturer" ADD CONSTRAINT "lecturer_account_fkey" FOREIGN KEY ("account") REFERENCES "account" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "lecturer" ADD CONSTRAINT "lecturer_account_fkey" FOREIGN KEY ("account") REFERENCES "auth_user" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table lecturer_rating
@@ -8141,7 +8141,7 @@ ALTER TABLE "note_rating" ADD CONSTRAINT "note_rating_student_fkey" FOREIGN KEY 
 -- ----------------------------
 -- Foreign Keys structure for table student
 -- ----------------------------
-ALTER TABLE "student" ADD CONSTRAINT "student_account_fkey" FOREIGN KEY ("account") REFERENCES "account" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "student" ADD CONSTRAINT "student_account_fkey" FOREIGN KEY ("account") REFERENCES "auth_user" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "student" ADD CONSTRAINT "student_course_fkey" FOREIGN KEY ("course") REFERENCES "course" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
