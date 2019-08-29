@@ -7,15 +7,18 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-## test
+
 class Account(models.Model):
-    password = models.CharField(max_length=80, blank=True, null=True)
-    role = models.CharField(max_length=80, blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     username = models.CharField(unique=True, max_length=80)
+    role = models.CharField(max_length=80)
 
     class Meta:
         managed = False
         db_table = 'account'
+
+    def __str__(self):
+        return f'{self.username} Profile'
 
 
 class Assignment(models.Model):
