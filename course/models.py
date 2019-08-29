@@ -53,3 +53,17 @@ class Subject(models.Model):
 
     def __str__(self):
         return f'Subject {self.id} | Name: {self.name}'
+
+
+class Enrollment(models.Model):
+    subject = models.ForeignKey('Subject', models.DO_NOTHING, db_column='subject')
+    student = models.ForeignKey('users.Student', models.DO_NOTHING, db_column='student')
+    status = models.IntegerField(blank=True, null=True)
+    # lesson = models.ForeignKey('Lesson', models.DO_NOTHING, db_column='lesson', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'enrollment'
+
+    def __str__(self):
+        return f'Student {self.student.name} | Subject: {self.subject.name}'

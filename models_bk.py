@@ -287,8 +287,8 @@ class LectureNote(models.Model):
 
 class Lecturer(models.Model):
     name = models.CharField(max_length=80, blank=True, null=True)
-    account = models.ForeignKey(Account, models.DO_NOTHING, db_column='account', blank=True, null=True)
-    email = models.CharField(max_length=80, blank=True, null=True)
+    account = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', blank=True, null=True)
+    # email = models.CharField(max_length=80, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -377,8 +377,8 @@ class Student(models.Model):
     nationality = models.CharField(max_length=80, blank=True, null=True)
     occupy = models.CharField(max_length=80, blank=True, null=True)
     graduated_university = models.CharField(max_length=80, blank=True, null=True)
-    email = models.CharField(max_length=80, blank=True, null=True)
-    account = models.ForeignKey(Account, models.DO_NOTHING, db_column='account', blank=True, null=True)
+    # email = models.CharField(max_length=80, blank=True, null=True)
+    account = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', blank=True, null=True)
     course = models.ForeignKey(Course, models.DO_NOTHING, db_column='course', blank=True, null=True)
     last_login = models.DateTimeField(blank=True, null=True)
     accumulated_online_time = models.DateTimeField(blank=True, null=True)
