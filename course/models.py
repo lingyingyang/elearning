@@ -66,4 +66,4 @@ class Enrollment(models.Model):
         db_table = 'enrollment'
 
     def __str__(self):
-        return f'Student {self.student.name} | Subject: {self.subject.name}'
+        return f'Student {self.student.account.username} | Subject: {self.subject.name}'
