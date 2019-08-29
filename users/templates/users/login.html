@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95" style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
+        <div class="container">
+            <h2>Login</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .</p>
+        </div>
+    </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>login</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="login-register-area pt-130 pb-130">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <h4> login </h4>
+                    </div>
+                    <div class="tab-content">
+                        <div class="login-form-container">
+                            <div class="login-register-form">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <!-- <input type="text" name="user-name" placeholder="Username">
+                                    <input type="password" name="user-password" placeholder="Password"> -->
+                                    <div class="button-box">
+                                        <div class="login-toggle-btn">
+                                            <input type="checkbox">
+                                            <label>Remember me</label>
+                                            <a href="#">Forgot Password?</a>
+                                        </div>
+                                        <button class="default-btn" type="submit"><span>Login</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--====== PATNAR LOGO PART ENDS ======-->
+
+{% endblock content %}
+
+

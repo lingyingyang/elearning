@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'course.apps.CourseConfig',
     'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +133,5 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'course-home'
 LOGIN_URL = 'users-login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

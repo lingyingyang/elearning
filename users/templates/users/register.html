@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!--====== SEARCH BOX PART ENDS ======-->
+
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95" style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
+        <div class="container">
+            <h2>Register</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .</p>
+        </div>
+    </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>Register</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="login-register-area pt-130 pb-130">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <h4>register</h4>
+                    </div>
+                    <div class="tab-content">
+                        <div class="login-form-container">
+                            <div class="login-register-form">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <!-- <input type="text" name="user-name" placeholder="Username">
+                                    <input type="password" name="user-password" placeholder="Password">
+                                    <input name="user-email" placeholder="Email" type="email"> -->
+                                    <div class="button-box">
+                                        <button class="default-btn" type="submit"><span>Register</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="border-top pt-3">
+                                <small class="text-muted">
+                                    Already Have An Account? <a class="ml-2" href="{% url 'users-login' %}">Sign In</a>
+                                </small>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--====== PATNAR LOGO PART ENDS ======-->
+
+{% endblock content %}
+
+
