@@ -8141,6 +8141,7 @@ ALTER TABLE "note_rating" ADD CONSTRAINT "note_rating_student_fkey" FOREIGN KEY 
 -- ----------------------------
 -- Foreign Keys structure for table student
 -- ----------------------------
+alter table "student" drop CONSTRAINT "student_account_fkey";
 ALTER TABLE "student" ADD CONSTRAINT "student_account_fkey" FOREIGN KEY ("account") REFERENCES "auth_user" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "student" ADD CONSTRAINT "student_course_fkey" FOREIGN KEY ("course") REFERENCES "course" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 

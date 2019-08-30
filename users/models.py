@@ -18,7 +18,7 @@ class Lecturer(models.Model):
 
 # name, email, last_login are in auth_user
 class Student(models.Model):
-    # name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80)
     gender = models.CharField(max_length=80, blank=True, null=True)
     nationality = models.CharField(max_length=80, blank=True, null=True)
     occupy = models.CharField(max_length=80, blank=True, null=True)
