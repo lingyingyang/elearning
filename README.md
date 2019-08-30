@@ -22,6 +22,7 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin / test1234@
 `python -m pip install psycopg2`  
 `python -m pip install django-crispy-forms`  
 `python -m django --version`
+`pip install pylint-django`  ye  https://stackoverflow.com/questions/45135263/class-has-no-objects-member
 ## Initial project
 `django startproject elearning`
 ## Initial Application

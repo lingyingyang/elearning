@@ -72,7 +72,7 @@
                                             <li><i class="fa fa-star"></i></li>
                                         </ul>
                                         <span>(20 Reviews)</span>
-                                        <a href="courses-single.html"><h4>{{ course.name }}</h4></a>
+                                        <a href="{% url 'courses-single' course.id %}"><h4>{{ course.name }}</h4></a>
                                         <div class="course-teacher">
                                             <div class="thum">
                                                 <a href="#"><img src="{% static  'images/course/teacher/t-1.jpg' %}" alt="teacher"></a>

@@ -144,7 +144,7 @@
                                         <a class="{{ courses_page }}" href="{% url 'course-courses' %}">Courses</a>
                                         <ul class="sub-menu">
                                             <li><a href="{% url 'course-courses' %}">Courses</a></li>
-                                            <li><a href="{% url 'course-single' %}">Course Single</a></li>
+                                            <li><a href="{% url 'courses-single' 7 %}">Course Single</a></li>
                                         </ul>
                                     </li>
                                     <!-- <li class="nav-item">
@@ -156,11 +156,11 @@
                                         </ul>
                                     </li> -->
                                     <li class="nav-item">
-                                        <a href="teachers.html">Lecturer</a>
+                                        <a href="{% url 'teachers'  %}">Lecturer</a>
                                         <ul class="sub-menu">
-                                            <li><a href="teachers.html">Lecturer</a></li>
-											<li><a href="teachers-2.html">Lecturer 2</a></li>
-                                            <li><a href="teachers-single.html">Lecturer Single</a></li>
+                                            <li><a href="{% url 'teachers'  %}">Lecturer</a></li>
+											<li><a href="{% url 'teachers-2' %}">Lecturer 2</a></li>
+                                            <li><a href="{% url 'teachers-single' %}">Lecturer Single</a></li>
                                         </ul>
                                     </li>
                                     <!-- <li class="nav-item">

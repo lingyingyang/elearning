@@ -16,6 +16,7 @@ class Faculty(models.Model):
 
 
 class Course(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=80, blank=True, null=True)
     course_describtion = models.TextField(blank=True, null=True)
     faculty = models.ForeignKey('Faculty', models.DO_NOTHING, db_column='faculty', blank=True, null=True)
@@ -41,6 +42,7 @@ class Category(models.Model):
         return f'Category {self.name}'
 
 class Subject(models.Model):
+    
     name = models.CharField(max_length=80, blank=True, null=True)
     category = models.ForeignKey(Category, models.DO_NOTHING, db_column='category', blank=True, null=True)
     thumb = models.CharField(max_length=100, blank=True, null=True)

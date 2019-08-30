@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from .services import *
+from .models import Subject
 
 
 def home(request):
@@ -23,9 +24,27 @@ def about(request):
     return render(request, 'about.html', context)
 
 
-def courseSingle(request):
-    context = { 'courses_page': 'active' }
+def courseSingle(request, course_id):
+    #course = Course.objects.get(pk=course_id);
+    course = get_object_or_404(Subject, pk=course_id)
+    context = { 
+        
+        'course': course }
     return render(request, 'courses-single.html', context)
+
+def teachers(request):
+    context = {
+        'teachers_page': 'active'
+    }
+    return render(request, 'teachers.html', context)
+
+def teacherSingle(request):
+    context = {'teacherSingle_page': 'active'}
+    return render(request, 'teachers-single.html', context)
+
+def teachersTwo(request):
+    context = {'teachersTwo_page':'active'}
+    return render(request, 'teachers-2.html', context)
 
 
 @login_required
