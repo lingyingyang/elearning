@@ -1,43 +1,6 @@
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
-
-
-# User Section
-# a tricky method - only use auth_user to authentication, other info use account
-class Account(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(unique=True, max_length=80)
-    role = models.CharField(max_length=80)
-
-    class Meta:
-        managed = False
-        db_table = 'account'
-
-    def __str__(self):
-        return f'{self.username} Profile'
-        # return f'{self.user.username} Profile'
-
-
-class Lecturer(models.Model):
-    name = models.CharField(max_length=80, blank=True, null=True)
-    account = models.ForeignKey(Account, models.DO_NOTHING, db_column='account', blank=True, null=True)
-    email = models.CharField(max_length=80, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'lecturer'
-
-
-class Assignment(models.Model):
-    due_date = models.DateField(default=timezone.now)
-    assignment_task = models.TextField()
-    lesson = models.SmallIntegerField()
-    type = models.SmallIntegerField()
-
-    def __str__(self):
-        return f'Assignment {self.id} due_data {self.due_date}'
 
 
 class Faculty(models.Model):
@@ -48,8 +11,12 @@ class Faculty(models.Model):
         managed = False
         db_table = 'faculty'
 
+    def __str__(self):
+        return f'Faculty {self.name}'
+
 
 class Course(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=80, blank=True, null=True)
     course_describtion = models.TextField(blank=True, null=True)
     faculty = models.ForeignKey('Faculty', models.DO_NOTHING, db_column='faculty', blank=True, null=True)
@@ -63,11 +30,6 @@ class Course(models.Model):
         return f'Course {self.id} | Name: {self.name}'
 
 
-class UserCourse(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-
-
 class Category(models.Model):
     name = models.CharField(max_length=80, blank=True, null=True)
     parent = models.ForeignKey('self', models.DO_NOTHING, db_column='parent', blank=True, null=True)
@@ -76,8 +38,11 @@ class Category(models.Model):
         managed = False
         db_table = 'category'
 
+    def __str__(self):
+        return f'Category {self.name}'
 
 class Subject(models.Model):
+    
     name = models.CharField(max_length=80, blank=True, null=True)
     category = models.ForeignKey(Category, models.DO_NOTHING, db_column='category', blank=True, null=True)
     thumb = models.CharField(max_length=100, blank=True, null=True)
@@ -90,3 +55,17 @@ class Subject(models.Model):
 
     def __str__(self):
         return f'Subject {self.id} | Name: {self.name}'
+
+
+class Enrollment(models.Model):
+    subject = models.ForeignKey('Subject', models.DO_NOTHING, db_column='subject')
+    student = models.ForeignKey('users.Student', models.DO_NOTHING, db_column='student')
+    status = models.IntegerField(blank=True, null=True)
+    # lesson = models.ForeignKey('Lesson', models.DO_NOTHING, db_column='lesson', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'enrollment'
+
+    def __str__(self):
+        return f'Student {self.student.account.username} | Subject: {self.subject.name}'

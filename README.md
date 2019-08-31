@@ -1,11 +1,11 @@
 # elearning
 an elearning website with recommender system.
 ## DEV
-localhost:8000  
-localhost:8000/admin  test account: admin/test1234  
+http://127.0.0.1:8000/ test account: yiliang / abcd1234@  
+http://127.0.0.1:8000/admin/  test account: admin/test1234@  
 ## Cloud - pythonanywhere
-http://lingyingyang.pythonanywhere.com/  
-http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234  
+http://lingyingyang.pythonanywhere.com/ test account: yiliang / abcd1234@  
+http://lingyingyang.pythonanywhere.com/admin/ test account: admin / test1234@  
 ## Components
 1. list page of courses 课程页面展示
 2. detail page of course 课程列表展示
@@ -20,11 +20,14 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 `python -m pip install python-rake`  
 `python -m pip install scikit-learn`  
 `python -m pip install psycopg2`  
+`python -m pip install django-crispy-forms`  
 `python -m django --version`
+`pip install pylint-django`  ye  https://stackoverflow.com/questions/45135263/class-has-no-objects-member
 ## Initial project
-`django startproject e-learning`
+`django startproject elearning`
 ## Initial Application
-`python -m django startapp course`
+- course component `python -m django startapp course`
+- users component `python -m django startapp users`
 ## run server
 `python manage.py runserver`  
 - debug: true => will reload automatically
@@ -45,8 +48,6 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin/test1234
 API: http://127.0.0.1:8000/cbtest/0   
 - 0 = subject id
 - result = a list of recommender subject based on this subject id in a similarity order
-# Frontend Procedure
-1. change all references of js, css, jpg, png to Django style, such as `<link rel="stylesheet" href="css/slick.css">` change to `<link rel="stylesheet" href="{% static 'css/slick.css' %}">`
 # Issues
 ## Populating SQL script into a migration step
 ### Method 1
@@ -58,6 +59,3 @@ API: http://127.0.0.1:8000/cbtest/0
 1. Use the given SQL script to populate models and data [Linked to solution](https://stackoverflow.com/questions/46708521/django-use-the-given-sql-dump-to-create-the-other-models-and-to-populate-the-d?noredirect=1&lq=1)
 2. connect to the database
 3. `python manage.py inspectdb > models.py`
-## one-to-one model link account with auth_user
-- use a tricky method - only use auth_user to authentication, other info use account  
-

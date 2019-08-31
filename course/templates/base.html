@@ -95,10 +95,17 @@
                                 </ul>
                             </div> <!-- social -->
                             <div class="login-register">
+                                {% if user.is_authenticated %}
                                 <ul>
-                                    <li><a href="{% url 'course-login' %}">Login</a></li>
-                                    <li><a href="{% url 'course-login' %}">Register</a></li>
+                                    <li><a href="{% url 'users-profile' %}">{{ user.username }}</a></li>
+                                    <li><a href="{% url 'users-logout' %}">Logout</a></li>
                                 </ul>
+                                {% else %}
+                                <ul>
+                                    <li><a href="{% url 'users-login' %}">Login</a></li>
+                                    <li><a href="{% url 'users-register' %}">Register</a></li>
+                                </ul>
+                                {% endif %}
                             </div>
                         </div> <!-- header right -->
                     </div>
@@ -125,16 +132,19 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="active" href="{% url 'course-home' %}">Home</a>
+                                        <a class="{{ home_page }}" href="{% url 'course-home' %}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'course-about' %}">About</a>
+                                        <a class="{{ about_page }}" href="{% url 'course-about' %}">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'course-courses' %}">Courses</a>
+                                        <a class="{{ courses_progress_page }}" href="{% url 'course-progress' %}">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="{{ courses_page }}" href="{% url 'course-courses' %}">Courses</a>
                                         <ul class="sub-menu">
                                             <li><a href="{% url 'course-courses' %}">Courses</a></li>
-                                            <li><a href="{% url 'course-single' %}">Course Single</a></li>
+                                            <li><a href="{% url 'courses-single' 7 %}">Course Single</a></li>
                                         </ul>
                                     </li>
                                     <!-- <li class="nav-item">
@@ -146,11 +156,11 @@
                                         </ul>
                                     </li> -->
                                     <li class="nav-item">
-                                        <a href="teachers.html">Lecturer</a>
+                                        <a href="{% url 'teachers'  %}">Lecturer</a>
                                         <ul class="sub-menu">
-                                            <li><a href="teachers.html">Lecturer</a></li>
-											<li><a href="teachers-2.html">Lecturer 2</a></li>
-                                            <li><a href="teachers-single.html">Lecturer Single</a></li>
+                                            <li><a href="{% url 'teachers'  %}">Lecturer</a></li>
+											<li><a href="{% url 'teachers-2' %}">Lecturer 2</a></li>
+                                            <li><a href="{% url 'teachers-single' %}">Lecturer Single</a></li>
                                         </ul>
                                     </li>
                                     <!-- <li class="nav-item">
@@ -207,7 +217,13 @@
     </div>
     
     <!--====== SEARCH BOX PART ENDS ======-->
-
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}{% endblock %}
 
     <!--====== FOOTER PART START ======-->
