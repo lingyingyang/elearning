@@ -14,15 +14,16 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin / test1234@
 5. course progress of student 学生的课程进度
 6. course recommendation for student 学生的课程推荐
 ## Install Django 
-`python -m pip list`  
+`python -m pip list` 
+`python -m django --version`  
+### Dependencies
 `python -m pip install django`  
 `python -m pip install pandas`  
 `python -m pip install python-rake`  
 `python -m pip install scikit-learn`  
 `python -m pip install psycopg2`  
 `python -m pip install django-crispy-forms`  
-`python -m django --version`
-`pip install pylint-django`  ye  https://stackoverflow.com/questions/45135263/class-has-no-objects-member
+`python -m pip install pylint-django` [Link](https://stackoverflow.com/questions/45135263/class-has-no-objects-member)
 ## Initial project
 `django startproject elearning`
 ## Initial Application
