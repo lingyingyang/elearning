@@ -31,6 +31,7 @@ def courseSingle(request, course_id):
         
         'course': course }
     return render(request, 'courses-single.html', context)
+    #  return JsonResponse(context, safe=False)
 
 def teachers(request):
     context = {
