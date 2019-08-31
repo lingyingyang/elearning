@@ -24,7 +24,7 @@ def about(request):
     return render(request, 'about.html', context)
 
 
-def courseSingle(request, course_id):
+def course_single(request, course_id):
     #course = Course.objects.get(pk=course_id);
     course = get_object_or_404(Subject, pk=course_id)
     context = { 
@@ -33,23 +33,19 @@ def courseSingle(request, course_id):
     return render(request, 'courses-single.html', context)
     #  return JsonResponse(context, safe=False)
 
-def teachers(request):
+def teacher(request):
     context = {
         'teachers_page': 'active'
     }
     return render(request, 'teachers.html', context)
 
-def teacherSingle(request):
-    context = {'teacherSingle_page': 'active'}
+def teacher_single(request):
+    context = {'teachers_page': 'active'}
     return render(request, 'teachers-single.html', context)
-
-def teachersTwo(request):
-    context = {'teachersTwo_page':'active'}
-    return render(request, 'teachers-2.html', context)
 
 
 @login_required
-def courseProgress(request):
+def course_progress(request):
     context = { 'courses_progress_page': 'active' }
     return render(request, 'courses-progress.html', context)
 
