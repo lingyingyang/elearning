@@ -1,11 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.views.decorators.vary import vary_on_cookie
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404, render
 from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
+
+from users.models import Student
+
+from .models import Enrollment, Subject
 from .services import *
-from .models import Subject
 
 
 def home(request):
@@ -16,9 +20,16 @@ def home(request):
 @cache_page(60 * 15)
 @vary_on_cookie
 def courses(request):
-    subjectId = 0
+    # get enrolled subjects of current user
+    subjectId = 10 # unauthenticated user
+    if request.user.is_authenticated: # atuthenticated user
+        current_student = Student.objects.get(account=request.user.id)
+        subject_list = Enrollment.objects.filter(student=current_student.id).values_list('subject', flat=True)
+        # get first subject id for testing
+        subjectId = subject_list[0]
     course_list = get_from_cb_by_subjectId(subjectId)
 
+    # Pagination
     paginator = Paginator(course_list, 6)
     page = request.GET.get('page')
     courses = paginator.get_page(page)

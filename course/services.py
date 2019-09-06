@@ -1,21 +1,34 @@
-from pandas import DataFrame
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.feature_extraction.text import CountVectorizer
-from .models import Course, Subject, Category
-
 import numpy as np
 import pandas as pd
+from pandas import DataFrame
+from rake_nltk import Rake
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+from .models import Category, Course, Subject
 
 
 def get_from_cb_by_subjectId(subjectId):
     df = DataFrame(list(Subject.objects.values('name', 'category__name')))
 
-    df['key_words'] = df['name'] + ' ' + df['category__name'].map(str)
+    # Data cleaning
+    df['name_keywords'] = ""
+    for index, row in df.iterrows():
+        name = row['name']
+        r = Rake()
+        r.extract_keywords_from_text(name)
+        keywords_dict = r.get_word_degrees()
+        row['name_keywords'] = ' '.join(list(keywords_dict.keys()))
+    print(df.head())
+    df['key_words'] = df['name_keywords'] + ' ' + df['category__name'].map(str)
+    
     print("===================df========================")
     print(df.head())
     # instantiating and generating the count matrix
     count = CountVectorizer()
     count_matrix = count.fit_transform(df['key_words'])
+    print(count.vocabulary_)
+    print(count_matrix.toarray())
     # generating the cosine similarity matrix
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     print("=====================cosine_sim======================")

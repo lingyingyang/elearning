@@ -23,7 +23,8 @@ http://lingyingyang.pythonanywhere.com/admin/ test account: admin / test1234@
 `python -m pip install scikit-learn`  
 `python -m pip install psycopg2`  
 `python -m pip install django-crispy-forms`  
-`python -m pip install pylint-django` [Link](https://stackoverflow.com/questions/45135263/class-has-no-objects-member)
+`python -m pip install pylint-django` [Link](https://stackoverflow.com/questions/45135263/class-has-no-objects-member)  
+`python -m pip install rake_nltk`  
 ## Initial project
 `django startproject elearning`
 ## Initial Application
