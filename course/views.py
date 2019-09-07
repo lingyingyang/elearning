@@ -21,16 +21,23 @@ def home(request):
 @vary_on_cookie
 def courses(request):
     # get enrolled subjects of current user
-    subjectId = 10 # unauthenticated user
-    if request.user.is_authenticated: # atuthenticated user
+    recommmend_list = []
+    if request.user.is_authenticated:  # atuthenticated user
         current_student = Student.objects.get(account=request.user.id)
-        subject_list = Enrollment.objects.filter(student=current_student.id).values_list('subject', flat=True)
-        # get first subject id for testing
-        subjectId = subject_list[0]
-    course_list = get_from_cb_by_subjectId(subjectId)
+        subject_list = Enrollment.objects.filter(
+            student=current_student.id).values_list('subject', flat=True)
+        if subject_list.count() < 1:
+            recommmend_list = get_random_list()
+        else:
+            # get first subject id for testing
+            subjectId = subject_list[0]
+            recommmend_list = get_from_cb_by_subjectId(subjectId)
+    else:
+        # unauthenticated user random 10 recommended list
+        recommmend_list = get_random_list()
 
     # Pagination
-    paginator = Paginator(course_list, 6)
+    paginator = Paginator(recommmend_list, 6)
     page = request.GET.get('page')
     courses = paginator.get_page(page)
 
@@ -49,9 +56,7 @@ def about(request):
 def course_single(request, course_id):
     #course = Course.objects.get(pk=course_id);
     course = get_object_or_404(Subject, pk=course_id)
-    context = {
-
-        'course': course}
+    context = {'course': course}
     return render(request, 'courses-single.html', context)
     #  return JsonResponse(context, safe=False)
 

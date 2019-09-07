@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 import pandas as pd
 from pandas import DataFrame
@@ -6,6 +8,14 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from .models import Category, Course, Subject
+
+
+def get_random_list():
+    recommmend_list = []
+    subject_length = Subject.objects.count()
+    recommmend_list = random.sample(range(0, subject_length), 10)
+    context = get_subjects_by_rd(recommmend_list)
+    return context
 
 
 def get_from_cb_by_subjectId(subjectId):
@@ -21,7 +31,7 @@ def get_from_cb_by_subjectId(subjectId):
         row['name_keywords'] = ' '.join(list(keywords_dict.keys()))
     print(df.head())
     df['key_words'] = df['name_keywords'] + ' ' + df['category__name'].map(str)
-    
+
     print("===================df========================")
     print(df.head())
     # instantiating and generating the count matrix
@@ -37,10 +47,15 @@ def get_from_cb_by_subjectId(subjectId):
     print("=====================rd======================")
     print(rd_list)
 
-    # return detailed information of recommendation list
-    context = list(Subject.objects.filter(pk__in=rd_list).values())
-    context.sort(key=lambda t: rd_list.index(t['id']))
+    context = get_subjects_by_rd(rd_list)
 
+    return context
+
+
+def get_subjects_by_rd(recommmend_list):
+    # return detailed information of recommendation list
+    context = list(Subject.objects.filter(pk__in=recommmend_list).values())
+    context.sort(key=lambda t: recommmend_list.index(t['id']))
     return context
 
 
