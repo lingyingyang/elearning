@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load random_numbers %}
 {% block content %}
     <!--====== PAGE BANNER PART START ======-->
     
@@ -37,7 +38,7 @@
                             <li class="nav-item">
                                 <a id="courses-list-tab" data-toggle="tab" href="#courses-list" role="tab" aria-controls="courses-list" aria-selected="false"><i class="fa fa-th-list"></i></a>
                             </li>
-                            <li class="nav-item">Showing 4 0f 24 Results</li>
+                            <li class="nav-item">Showing 6 0f {{ courses_size }} Results</li>
                         </ul> <!-- nav -->
                         
                         <div class="courses-search float-right">
@@ -71,7 +72,7 @@
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                         </ul>
-                                        <span>(20 Reviews)</span>
+                                        <span>({% random_int 1000 %} Reviews)</span>
                                         <a href="{% url 'courses-single' course.id %}"><h4>{{ course.name }}</h4></a>
                                         <div class="course-teacher">
                                             <div class="thum">
@@ -82,8 +83,8 @@
                                             </div>
                                             <div class="admin">
                                                 <ul>
-                                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
+                                                    <li><a href="#"><i class="fa fa-user"></i><span>{% random_int 100 %}</span></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart"></i><span>{% random_int 100 %}</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>

@@ -43,7 +43,8 @@ def courses(request):
 
     context = {
         'courses_page': 'active',
-        'courses': courses
+        'courses': courses,
+        'courses_size': recommmend_list.__len__
     }
     return render(request, 'courses.html', context)
 

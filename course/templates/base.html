@@ -137,6 +137,7 @@
                                     <li class="nav-item">
                                         <a class="{{ about_page }}" href="{% url 'course-about' %}">About</a>
                                     </li>
+                                    {% if not user.is_staff and not user.is_superuser %}
                                     <li class="nav-item">
                                         <a class="{{ courses_progress_page }}" href="{% url 'course-progress' %}">Dashboard</a>
                                     </li>
@@ -147,6 +148,7 @@
                                             <li><a href="{% url 'courses-single' 7 %}">Course Single</a></li>
                                         </ul> -->
                                     </li>
+                                    {% endif %}
                                     <!-- <li class="nav-item">
                                         <a href="events.html">Events</a>
                                         <ul class="sub-menu">
@@ -175,14 +177,14 @@
                                             <li><a href="shop.html">Shop</a></li>
                                             <li><a href="shop-single.html">Shop Single</a></li>
                                         </ul>
-                                    </li> -->
+                                    </li>
                                     <li class="nav-item">
                                         <a href="contact.html">Contact</a>
                                         <ul class="sub-menu">
                                             <li><a href="contact.html">Contact Us</a></li>
                                             <li><a href="contact-2.html">Contact Us 2</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div class="right-icon text-right">
