@@ -35,6 +35,8 @@ def courses(request):
     else:
         # unauthenticated user random 10 recommended list
         recommmend_list = get_random_list()
+    # put recommmend_list into session
+    request.session['recommmend_list'] = recommmend_list
 
     # Pagination
     paginator = Paginator(recommmend_list, 6)
@@ -57,9 +59,15 @@ def about(request):
 def course_single(request, course_id):
     #course = Course.objects.get(pk=course_id);
     course = get_object_or_404(Subject, pk=course_id)
-    context = {'course': course}
+    recommmend_list = request.session.get('recommmend_list')
+    random_items = [recommmend_list[random.randrange(len(recommmend_list))]
+                    for item in range(2)]
+    context = {
+        'courses_page': 'active',
+        'course': course,
+        'recommended_courses': random_items
+    }
     return render(request, 'courses-single.html', context)
-    #  return JsonResponse(context, safe=False)
 
 
 def teacher(request):

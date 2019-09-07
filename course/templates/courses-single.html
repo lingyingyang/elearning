@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load random_numbers %}
 {% block content %}
 
     <!--====== PAGE BANNER PART START ======-->
@@ -32,7 +33,7 @@
                                 <li>
                                     <div class="course-category">
                                         <span>Category</span>
-                                        <h6>{{course.category}} </h6>
+                                        <h6>{{course.category.name}} </h6>
                                     </div>
                                 </li>
                                 <li>
@@ -44,7 +45,7 @@
                                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                                             <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="rating">(20 Reviews)</li>
+                                            <li class="rating">({% random_int 1000 %} Reviews)</li>
                                         </ul>
                                     </div>
                                 </li>
@@ -445,11 +446,12 @@
                             <h3>Related Courses</h3>
                         </div>
                         <div class="row">
+                            {% for course_rd in recommended_courses %}
                             <div class="col-md-6">
                                 <div class="single-course mt-30">
                                     <div class="thum">
                                         <div class="image">
-                                            <img src="{% static 'images/course/cu-2.jpg' %}" alt="Course">
+                                            <img src="/static/images/course/cu-{{ forloop.counter }}.jpg" alt="Course">
                                         </div>
                                         <div class="price">
                                             <span>Free</span>
@@ -463,62 +465,26 @@
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                         </ul>
-                                        <span>(20 Reviews)</span>
-                                        <a href="courses-single.html"><h4>Learn basic javascript from start for beginner</h4></a>
+                                        <span>({% random_int 1000 %} Reviews)</span>
+                                        <a href="{% url 'courses-single' course_rd.id %}"><h4>{{ course_rd.name }}</h4></a>
                                         <div class="course-teacher">
                                             <div class="thum">
-                                                <a href="#"><img src="{% static 'images/course/teacher/t-2.jpg' %}" alt="teacher"></a>
+                                                <a href="#"><img src="/static/images/course/teacher/t-{{ forloop.counter }}.jpg" alt="teacher"></a>
                                             </div>
                                             <div class="name">
                                                 <a href="#"><h6>Mark anthem</h6></a>
                                             </div>
                                             <div class="admin">
                                                 <ul>
-                                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
+                                                    <li><a href="#"><i class="fa fa-user"></i><span>{% random_int 100 %}</span></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart"></i><span>{% random_int 100 %}</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div> <!-- single course -->
                             </div>
-                            <div class="col-md-6">
-                                <div class="single-course mt-30">
-                                    <div class="thum">
-                                        <div class="image">
-                                            <img src="{% static 'images/course/cu-1.jpg' %}" alt="Course">
-                                        </div>
-                                        <div class="price">
-                                            <span>Free</span>
-                                        </div>
-                                    </div>
-                                    <div class="cont">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>(20 Reviews)</span>
-                                        <a href="courses-single.html"><h4>Learn basic javascript from start for beginner</h4></a>
-                                        <div class="course-teacher">
-                                            <div class="thum">
-                                                <a href="#"><img src="{% static 'images/course/teacher/t-3.jpg' %}" alt="teacher"></a>
-                                            </div>
-                                            <div class="name">
-                                                <a href="#"><h6>Mark anthem</h6></a>
-                                            </div>
-                                            <div class="admin">
-                                                <ul>
-                                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- single course -->
-                            </div>
+                            {% endfor %}
                         </div> <!-- row -->
                     </div> <!-- related courses -->
                 </div>
