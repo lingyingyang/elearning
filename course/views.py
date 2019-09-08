@@ -70,18 +70,6 @@ def course_single(request, course_id):
     return render(request, 'courses-single.html', context)
 
 
-def teacher(request):
-    context = {
-        'teachers_page': 'active'
-    }
-    return render(request, 'teachers.html', context)
-
-
-def teacher_single(request):
-    context = {'teachers_page': 'active'}
-    return render(request, 'teachers-single.html', context)
-
-
 @login_required
 def course_progress(request):
     context = {'courses_progress_page': 'active'}

@@ -10,4 +10,6 @@ urlpatterns = [
         template_name='users/logout.html'), name='users-logout'),
     path('profile/', views.profile, name='users-profile'),
     path('register/', views.register, name='users-register'),
+    path('teachers-single/<int:lecturerId>', views.teacher_single, name='teachers-single'),
+    path('teachers/', views.teacher, name='teachers'),
 ]

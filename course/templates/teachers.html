@@ -1,124 +1,69 @@
 {% extends "base.html" %}
 {% load static %}
+{% load index %}
 {% block content %}
-   
-    <!--====== TEACHERS PART START ======-->
-    
-    <section id="teachers-page" class="pt-90 pb-120 gray-bg">
-        <div class="container">
-           <div class="row">
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-1.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="#"><h6>MarkMark Alen</h6></a>
-                            <span>Vice Chancellor</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-2.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>David card </h6></a>
-                            <span>Pro Chancellor</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-3.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>Rebeka Alig</h6></a>
-                            <span>Pro Chancellor</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-4.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>Hanna Bein</h6></a>
-                            <span>Aerobics head</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-5.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>David Card </h6></a>
-                            <span>Pro Chancellor</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-6.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>Mark Alen</h6></a>
-                            <span>Vice Chancellor</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-7.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>Rebeka alig</h6></a>
-                            <span>Pro chancellor</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                   <div class="single-teachers mt-30 text-center">
-                        <div class="image">
-                            <img src="{% static 'images/teachers/t-8.jpg' %}" alt="Teachers">
-                        </div>
-                        <div class="cont">
-                            <a href="teachers-single.html"><h6>Hanna Bein</h6></a>
-                            <span>Aerobics head</span>
-                        </div>
-                    </div> <!-- single teachers -->
-               </div>
-           </div> <!-- row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="courses-pagination mt-50">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a href="#" aria-label="Previous">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="active" href="#">1</a></li>
-                            <li class="page-item"><a href="#">2</a></li>
-                            <li class="page-item"><a href="#">3</a></li>
-                            <li class="page-item">
-                                <a href="#" aria-label="Next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>  <!-- courses pagination -->
-                </div>
-            </div>  <!-- row -->
-        </div> <!-- container -->
-    </section>
-    
-    <!--====== TEACHERS PART ENDS ======-->
-    {% endblock content %}
+<!--====== TEACHERS PART START ======-->
+
+<section id="teachers-page" class="pt-90 pb-120 gray-bg">
+    <div class="container">
+        <div class="row">
+            {% for lecturer in lecturers %}
+            <div class="col-lg-3 col-sm-6">
+                <div class="single-teachers mt-30 text-center">
+                    <div class="image">
+                        <img src="/static/images/teachers/t-{{ forloop.counter }}.jpg" alt="Teachers">
+                    </div>
+                    <div class="cont">
+                        <a href="{% url 'teachers-single' lecturer.id %}"><h6>{{ lecturer.account.username }}</h6></a>
+                        <span>{{ title_list|index:forloop.counter0 }}</span>
+                    </div>
+                </div> <!-- single teachers -->
+            </div>
+            {% endfor %}
+        </div> <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="courses-pagination mt-50">
+                    <ul class="pagination justify-content-center">
+                        {% if lecturers.has_previous %}
+                        <li class="page-item">
+                            <a aria-label="First" href="?page=1">
+                                <i class="fa fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a aria-label="Previous" href="?page={{ lecturers.previous_page_number }}">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for num in lecturers.paginator.page_range %}
+                            {% if lecturers.number == num %}
+                        <li class="page-item"><a class="active" href="?page={{ num }}">{{ num }}</a></li>
+                            {% elif num > lecturers.number|add:'-4' and num < lecturers.number|add:'4' %}
+                        <li class="page-item"><a href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if lecturers.has_next %}
+                        <li class="page-item">
+                            <a href="?page={{ lecturers.next_page_number }}" aria-label="Next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a aria-label="Last" href="?page={{ lecturers.paginator.num_pages }}">
+                                <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>  <!-- courses pagination -->
+            </div>
+        </div>  <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== TEACHERS PART ENDS ======-->
+{% endblock content %}
