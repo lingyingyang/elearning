@@ -3,9 +3,9 @@ an elearning website with recommender system.
 ## DEV
 http://127.0.0.1:8000/ test account: yiliang / abcd1234@  
 http://127.0.0.1:8000/admin/  test account: admin/test1234@  
-## Cloud - pythonanywhere
-http://lingyingyang.pythonanywhere.com/ test account: yiliang / abcd1234@  
-http://lingyingyang.pythonanywhere.com/admin/ test account: admin / test1234@  
+## Cloud - AWS EC2
+http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/ test account: yiliang / abcd1234@  
+http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/admin test account: admin / test1234@  
 ## Components
 1. list page of courses 课程页面展示
 2. detail page of course 课程列表展示
