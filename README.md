@@ -3,7 +3,7 @@ an elearning website with recommender system.
 ## DEV
 http://127.0.0.1:8000/ test account: yiliang / abcd1234@  
 http://127.0.0.1:8000/admin/  test account: admin/test1234@  
-## Cloud - pythonanywhere
+## Cloud - AWS EC2
 http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/ test account: yiliang / abcd1234@  
 http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/admin test account: admin / test1234@  
 ## Components
