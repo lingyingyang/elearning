@@ -41,7 +41,8 @@ def teacher(request):
     context = {
         'teachers_page': 'active',
         'lecturers': lecturers,
-        'title_list': title_list
+        'title_list': title_list,
+        'lecturers_size': lecturer_list.__len__
     }
     return render(request, 'teachers.html', context)
 

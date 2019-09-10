@@ -12,7 +12,7 @@
                         <h2>Our Courses</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'course-home' %}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Courses</li>
                             </ol>
                         </nav>
@@ -26,7 +26,7 @@
    
     <!--====== COURSES PART START ======-->
     
-    <section id="courses-part" class="pt-120 pb-120 gray-bg">
+    <section id="courses-part" class="pt-60 pb-60 gray-bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -38,7 +38,7 @@
                             <li class="nav-item">
                                 <a id="courses-list-tab" data-toggle="tab" href="#courses-list" role="tab" aria-controls="courses-list" aria-selected="false"><i class="fa fa-th-list"></i></a>
                             </li>
-                            <li class="nav-item">Showing 6 0f {{ courses_size }} Results</li>
+                            <li class="nav-item">Showing {{ courses|length }} 0f {{ courses_size }} Results</li>
                         </ul> <!-- nav -->
                         
                         <div class="courses-search float-right">
@@ -50,52 +50,47 @@
                     </div> <!-- courses top search -->
                 </div>
             </div> <!-- row -->
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="courses-grid" role="tabpanel" aria-labelledby="courses-grid-tab">
-                    <div class="row">
-                        {% for course in courses %}
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-course mt-30">
-                                    <div class="thum">
-                                        <div class="image">
-                                            <img src="/static/images/course/cu-{{ forloop.counter }}.jpg" alt="Course">
-                                        </div>
-                                        <div class="price">
-                                            <span>Free</span>
-                                        </div>
-                                    </div>
-                                    <div class="cont">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>({% random_int 1000 %} Reviews)</span>
-                                        <a href="{% url 'courses-single' course.id %}"><h4>{{ course.name }}</h4></a>
-                                        <div class="course-teacher">
-                                            <div class="thum">
-                                                <a href="#"><img src="{% static  'images/course/teacher/t-1.jpg' %}" alt="teacher"></a>
-                                            </div>
-                                            <div class="name">
-                                                <a href="#"><h6>Mark anthem</h6></a>
-                                            </div>
-                                            <div class="admin">
-                                                <ul>
-                                                    <li><a href="#"><i class="fa fa-user"></i><span>{% random_int 100 %}</span></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart"></i><span>{% random_int 100 %}</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- single course -->
+            <div class="row">
+                {% for course in courses %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-course mt-30">
+                            <div class="thum">
+                                <div class="image">
+                                    <img src="/static/images/course/cu-{{ forloop.counter }}.jpg" alt="Course">
+                                </div>
+                                <div class="price">
+                                    <span>Free</span>
+                                </div>
                             </div>
-                        {% endfor %}
-                    </div> <!-- row -->
-                </div>
-            </div> <!-- tab content -->
-
+                            <div class="cont">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span>({% random_int 1000 %} Reviews)</span>
+                                <a href="{% url 'courses-single' course.id %}"><h4>{{ course.name }}</h4></a>
+                                <div class="course-teacher">
+                                    <div class="thum">
+                                        <a href="#"><img src="{% static  'images/course/teacher/t-1.jpg' %}" alt="teacher"></a>
+                                    </div>
+                                    <div class="name">
+                                        <a href="#"><h6>Mark anthem</h6></a>
+                                    </div>
+                                    <div class="admin">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i><span>{% random_int 100 %}</span></a></li>
+                                            <li><a href="#"><i class="fa fa-heart"></i><span>{% random_int 100 %}</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- single course -->
+                    </div>
+                {% endfor %}
+            </div> <!-- row -->
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="courses-pagination mt-50">
