@@ -7,7 +7,27 @@ from rake_nltk import Rake
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from .models import Category, Course, Subject
+from users.models import Student
+
+from .models import Subject, Enrollment
+
+
+def get_recommmend_list(user):
+    recommmend_list = []
+    if user.is_authenticated:  # atuthenticated user
+        current_student = Student.objects.get(account=user.id)
+        subject_list = Enrollment.objects.filter(
+            student=current_student.id).values_list('subject', flat=True)
+        if subject_list.count() < 1:
+            recommmend_list = get_random_list()
+        else:
+            # get first subject id for testing
+            subjectId = subject_list[0]
+            recommmend_list = get_from_cb_by_subjectId(subjectId)
+    else:
+        # unauthenticated user random 10 recommended list
+        recommmend_list = get_random_list()
+    return recommmend_list
 
 
 def get_random_list():

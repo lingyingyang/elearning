@@ -6,8 +6,6 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 
-from users.models import Student
-
 from .models import Enrollment, Subject
 from .services import *
 
@@ -15,6 +13,11 @@ from .services import *
 def home(request):
     context = {'home_page': 'active'}
     return render(request, 'index.html', context)
+
+
+def about(request):
+    context = {'about_page': 'active'}
+    return render(request, 'about.html', context)
 
 
 def courses_list(request):
@@ -45,25 +48,12 @@ def courses_list(request):
     return render(request, 'courses-list.html', context)
 
 
-
 @cache_page(60 * 15)
 @vary_on_cookie
 def courses_cb(request):
     # get enrolled subjects of current user
-    recommmend_list = []
-    if request.user.is_authenticated:  # atuthenticated user
-        current_student = Student.objects.get(account=request.user.id)
-        subject_list = Enrollment.objects.filter(
-            student=current_student.id).values_list('subject', flat=True)
-        if subject_list.count() < 1:
-            recommmend_list = get_random_list()
-        else:
-            # get first subject id for testing
-            subjectId = subject_list[0]
-            recommmend_list = get_from_cb_by_subjectId(subjectId)
-    else:
-        # unauthenticated user random 10 recommended list
-        recommmend_list = get_random_list()
+    recommmend_list = get_recommmend_list(user=request.user)
+    
     # put recommmend_list into session
     request.session['recommmend_list'] = recommmend_list
 
@@ -80,15 +70,14 @@ def courses_cb(request):
     return render(request, 'courses-cb.html', context)
 
 
-def about(request):
-    context = {'about_page': 'active'}
-    return render(request, 'about.html', context)
-
-
 def course_single(request, course_id):
     #course = Course.objects.get(pk=course_id);
     course = get_object_or_404(Subject, pk=course_id)
     recommmend_list = request.session.get('recommmend_list')
+    if recommmend_list is None:
+        recommmend_list = get_recommmend_list(request.user)
+    print("=================recommmend_list=====")
+    print(recommmend_list)
     random_items = [recommmend_list[random.randrange(len(recommmend_list))]
                     for item in range(2)]
     context = {
