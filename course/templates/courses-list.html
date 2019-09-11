@@ -42,9 +42,10 @@
                         </ul> <!-- nav -->
                         
                         <div class="courses-search float-right">
-                            <form action="#">
-                                <input type="text" placeholder="Search">
-                                <button type="button"><i class="fa fa-search"></i></button>
+                            <form method="POST" action="{% url 'course-courses' %}">
+                                {% csrf_token %}
+                                <input type="text" name="filter_str" placeholder="Search" value="{{ filter_str }}">
+                                <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div> <!-- courses search -->
                     </div> <!-- courses top search -->
@@ -97,12 +98,12 @@
                         <ul class="pagination justify-content-center">
                             {% if courses.has_previous %}
                             <li class="page-item">
-                                <a aria-label="First" href="?page=1">
+                                <a aria-label="First" href="{{ base_url }}1">
                                     <i class="fa fa-angle-double-left"></i>
                                 </a>
                             </li>
                             <li class="page-item">
-                                <a aria-label="Previous" href="?page={{ courses.previous_page_number }}">
+                                <a aria-label="Previous" href="{{ base_url }}{{ courses.previous_page_number }}">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                             </li>
@@ -110,20 +111,20 @@
                             
                             {% for num in courses.paginator.page_range %}
                                 {% if courses.number == num %}
-                            <li class="page-item"><a class="active" href="?page={{ num }}">{{ num }}</a></li>
+                            <li class="page-item"><a class="active" href="{{ base_url }}{{ num }}">{{ num }}</a></li>
                                 {% elif num > courses.number|add:'-3' and num < courses.number|add:'3' %}
-                            <li class="page-item"><a href="?page={{ num }}">{{ num }}</a></li>
+                            <li class="page-item"><a href="{{ base_url }}{{ num }}">{{ num }}</a></li>
                                 {% endif %}
                             {% endfor %}
 
                             {% if courses.has_next %}
                             <li class="page-item">
-                                <a href="?page={{ courses.next_page_number }}" aria-label="Next">
+                                <a href="{{ base_url }}{{ courses.next_page_number }}" aria-label="Next">
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>
                             <li class="page-item">
-                                <a aria-label="Last" href="?page={{ courses.paginator.num_pages }}">
+                                <a aria-label="Last" href="{{ base_url }}{{ courses.paginator.num_pages }}">
                                     <i class="fa fa-angle-double-right"></i>
                                 </a>
                             </li>

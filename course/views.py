@@ -17,9 +17,38 @@ def home(request):
     return render(request, 'index.html', context)
 
 
+def courses_list(request):
+    # get filter string
+    filter_str = request.POST.get('filter_str', '').strip()
+    if len(filter_str) == 0:
+        filter_str = request.GET.get('filter_str', '').strip()
+    course_list = []
+    if len(filter_str) == 0:
+        course_list = Subject.objects.all()
+        base_url = '?page='
+    else:
+        course_list = Subject.objects.filter(name__icontains=filter_str)
+        base_url = '?filter_str=' + filter_str + '&page='
+            
+    # Pagination
+    paginator = Paginator(course_list, 6)
+    page = request.GET.get('page')
+    courses = paginator.get_page(page)
+
+    context = {
+        'courses_page': 'active',
+        'courses': courses,
+        'courses_size': course_list.__len__,
+        'base_url': base_url,
+        'filter_str': filter_str
+    }
+    return render(request, 'courses-list.html', context)
+
+
+
 @cache_page(60 * 15)
 @vary_on_cookie
-def courses(request):
+def courses_cb(request):
     # get enrolled subjects of current user
     recommmend_list = []
     if request.user.is_authenticated:  # atuthenticated user
@@ -48,7 +77,7 @@ def courses(request):
         'courses': courses,
         'courses_size': recommmend_list.__len__
     }
-    return render(request, 'courses.html', context)
+    return render(request, 'courses-cb.html', context)
 
 
 def about(request):

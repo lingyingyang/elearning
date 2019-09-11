@@ -29,9 +29,19 @@ def profile(request):
 
 
 def teacher(request):
+    # get filter string
+    filter_str = request.POST.get('filter_str', '').strip()
+    if len(filter_str) == 0:
+        filter_str = request.GET.get('filter_str', '').strip()
+    if len(filter_str) == 0:
+        lecturer_list = Lecturer.objects.all()
+        base_url = '?page='
+    else:
+        lecturer_list = Lecturer.objects.filter(account__username__icontains=filter_str)
+        base_url = '?filter_str=' + filter_str + '&page='
+            
     title_list = ["Vice Chancellor", "Pro Chancellor", "Aerobics head", "Vice Chancellor",
                   "Pro Chancellor", "Aerobics head", "Vice Chancellor", "Pro Chancellor"]
-    lecturer_list = Lecturer.objects.all()
 
     # Pagination
     paginator = Paginator(lecturer_list, 8)
@@ -42,7 +52,9 @@ def teacher(request):
         'teachers_page': 'active',
         'lecturers': lecturers,
         'title_list': title_list,
-        'lecturers_size': lecturer_list.__len__
+        'lecturers_size': lecturer_list.__len__,
+        'base_url': base_url,
+        'filter_str': filter_str
     }
     return render(request, 'teachers.html', context)
 
