@@ -97,7 +97,7 @@
                             <div class="login-register">
                                 {% if user.is_authenticated %}
                                 <ul>
-                                    <li><a href="{% url 'users-profile' %}">{{ user.username }}</a></li>
+                                    <li><a href="{% url 'users-profile' %}">{{ user.username|title }}</a></li>
                                     <li><a href="{% url 'users-logout' %}">Logout</a></li>
                                 </ul>
                                 {% else %}
@@ -137,6 +137,11 @@
                                     <li class="nav-item">
                                         <a class="{{ about_page }}" href="{% url 'course-about' %}">About</a>
                                     </li>
+                                    {% if user.is_superuser %}
+                                    <li class="nav-item">
+                                        <a href="{% url 'admin:index' %}">Admin</a>
+                                    </li>
+                                    {% endif %}
                                     {% if not user.is_staff and not user.is_superuser %}
                                     <li class="nav-item">
                                         <a class="{{ courses_progress_page }}" href="{% url 'course-progress' %}">Dashboard</a>
@@ -220,8 +225,11 @@
     <!--====== SEARCH BOX PART ENDS ======-->
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-            {{ message }}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         {% endfor %}
     {% endif %}

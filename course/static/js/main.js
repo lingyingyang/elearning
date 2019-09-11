@@ -16,7 +16,13 @@ $(function() {
     
     $(window).on('load', function(event) {
         $('.preloader').delay(500).fadeOut(500);
-    });
+      });
+    
+    $(document).ready(function() {
+      $('.alert').delay(2000).slideUp(200, function() {
+        $(this).alert('close');
+      });
+    })
     
     
     //===== Search
