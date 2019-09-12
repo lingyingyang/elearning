@@ -34,12 +34,13 @@ def teacher(request):
     if len(filter_str) == 0:
         filter_str = request.GET.get('filter_str', '').strip()
     if len(filter_str) == 0:
-        lecturer_list = Lecturer.objects.all()
+        lecturer_list = list(Lecturer.objects.all())
         base_url = '?page='
     else:
-        lecturer_list = Lecturer.objects.filter(account__username__icontains=filter_str)
+        lecturer_list = list(Lecturer.objects.filter(
+            account__username__icontains=filter_str).values())
         base_url = '?filter_str=' + filter_str + '&page='
-            
+
     title_list = ["Vice Chancellor", "Pro Chancellor", "Aerobics head", "Vice Chancellor",
                   "Pro Chancellor", "Aerobics head", "Vice Chancellor", "Pro Chancellor"]
 

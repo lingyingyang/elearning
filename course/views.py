@@ -27,12 +27,13 @@ def courses_list(request):
         filter_str = request.GET.get('filter_str', '').strip()
     course_list = []
     if len(filter_str) == 0:
-        course_list = Subject.objects.all()
+        course_list = list(Subject.objects.all())
         base_url = '?page='
     else:
-        course_list = Subject.objects.filter(name__icontains=filter_str)
+        course_list = list(Subject.objects.filter(
+            name__icontains=filter_str).values())
         base_url = '?filter_str=' + filter_str + '&page='
-            
+
     # Pagination
     paginator = Paginator(course_list, 6)
     page = request.GET.get('page')
@@ -53,7 +54,7 @@ def courses_list(request):
 def courses_cb(request):
     # get enrolled subjects of current user
     recommmend_list = get_recommmend_list(user=request.user)
-    
+
     # put recommmend_list into session
     request.session['recommmend_list'] = recommmend_list
 
