@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'users/css/login-register.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="breadcrumb-area">
