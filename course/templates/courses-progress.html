@@ -2,10 +2,15 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'dashboard/js/map-script.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+
 <!--====== PAGE BANNER PART START ======-->
 
 <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url('/static/images/page-banner-1.jpg')">
