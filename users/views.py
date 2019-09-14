@@ -1,11 +1,12 @@
 import random
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import UserRegisterForm
-from .models import Lecturer
+from .forms import LecturerRatingForm, UserRegisterForm
+from .models import Lecturer, LecturerRating, Student
 
 
 def register(request):
@@ -64,9 +65,30 @@ def teacher_single(request, lecturerId):
     title_list = ["Vice Chancellor", "Pro Chancellor", "Aerobics head"]
     title = title_list[random.randint(0, 2)]
     lecturer = get_object_or_404(Lecturer, pk=lecturerId)
+    lecturer_rating_list = list(
+        LecturerRating.objects.filter(lecturer=lecturerId))
+    print("==============lecturer_rating_list==============")
+    print(lecturer_rating_list)
+    rating_form = LecturerRatingForm()
     context = {
         'teachers_page': 'active',
         'lecturer': lecturer,
-        'title': title
+        'title': title,
+        'lecturer_rating_list': lecturer_rating_list,
+        'rating_form': rating_form
     }
     return render(request, 'teachers-single.html', context)
+
+
+@login_required
+def teacher_rating(request):
+    lecturerId = request.POST.get('lecturer', '')
+
+    form = LecturerRatingForm(request.POST)
+    current_student = Student.objects.get(account=request.user.id)
+    form.instance.student = current_student
+    form.fields['lecturer'] = lecturerId
+    form.save()
+    messages.success(request, f'Your comment has been created!')
+
+    return redirect('teachers-single', lecturerId)

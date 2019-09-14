@@ -171,68 +171,46 @@
                                                 </div>
                                             </div> <!-- single reviews -->
                                        </li>
+                                       {% for item in lecturer_rating_list %}
                                        <li>
-                                           <div class="single-reviews">
-                                                <div class="reviews-author">
-                                                    <div class="author-thum">
-                                                        <img src="{% static 'images/review/r-2.jpg' %}" alt="Reviews">
-                                                    </div>
-                                                    <div class="author-name">
-                                                        <h6>Humayun Ahmed</h6>
-                                                        <span>April 13, 2019</span>
-                                                    </div>
-                                                </div>
-                                                <div class="reviews-description pt-20">
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                                                    <div class="rating">
-                                                        <ul>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                        <span>/ 5 Star</span>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- single reviews -->
-                                       </li>
-                                       <li>
-                                           <div class="single-reviews">
-                                                <div class="reviews-author">
-                                                    <div class="author-thum">
-                                                        <img src="{% static 'images/review/r-3.jpg' %}" alt="Reviews">
-                                                    </div>
-                                                    <div class="author-name">
-                                                        <h6>Tania Aktar</h6>
-                                                        <span>April 20, 2019</span>
-                                                    </div>
-                                                </div>
-                                                <div class="reviews-description pt-20">
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                                                    <div class="rating">
-                                                        <ul>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                        <span>/ 5 Star</span>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- single reviews -->
-                                       </li>
+                                            <div class="single-reviews">
+                                                 <div class="reviews-author">
+                                                     <div class="author-thum">
+                                                         <img src="{% static 'images/review/r-3.jpg' %}" alt="Reviews">
+                                                     </div>
+                                                     <div class="author-name">
+                                                         <h6>{{ item.student.account.username }}</h6>
+                                                         <span>{{ item.student.account.last_login|date:'M d, Y' }}</span>
+                                                     </div>
+                                                 </div>
+                                                 <div class="reviews-description pt-20">
+                                                     <p>many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
+                                                     <div class="rating">
+                                                         <ul>
+                                                             <li><i class="fa fa-star"></i></li>
+                                                             <li><i class="fa fa-star"></i></li>
+                                                             <li><i class="fa fa-star"></i></li>
+                                                             <li><i class="fa fa-star"></i></li>
+                                                             <li><i class="fa fa-star"></i></li>
+                                                         </ul>
+                                                         <span>/ {{ item.rating }} Star</span>
+                                                     </div>
+                                                 </div>
+                                             </div> <!-- single reviews -->
+                                        </li>
+                                       {% endfor %}
                                     </ul>
                                     <div class="title pt-15">
                                         <h6>Leave A Comment</h6>
                                     </div>
                                     <div class="reviews-form">
-                                        <form action="#">
+                                        <form method="POST" action="{% url 'teachers-rating' %}">
+                                            {% csrf_token %}
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-single">
                                                             <input type="text" placeholder="Fast name">
+                                                            Your Rating: {{ rating_form.rating }}
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -261,7 +239,7 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="form-single">
-                                                            <button type="button" class="main-btn">Post Comment</button>
+                                                            <button type="submit" class="main-btn">Post Comment</button>
                                                         </div>
                                                     </div>
                                                 </div> <!-- row -->

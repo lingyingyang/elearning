@@ -36,3 +36,16 @@ class Student(models.Model):
 
     def __str__(self):
         return f'Student {self.account.username}'
+
+
+class LecturerRating(models.Model):
+    lecturer = models.ForeignKey(Lecturer, models.DO_NOTHING, db_column='lecturer', blank=True, null=True)
+    student = models.ForeignKey('Student', models.DO_NOTHING, db_column='student', blank=True, null=True)
+    rating = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'lecturer_rating'
+    
+    def __str__(self):
+        return f'{self.lecturer} | {self.lecturer.id} | {self.rating}'
