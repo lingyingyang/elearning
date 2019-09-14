@@ -1,12 +1,8 @@
-
-body{ background: #f7f7f7; font: 12px/1.5 "微软雅黑",'Microsoft YaHei',Arial,simsun; color:#5e5e5e;  min-width:1200px;}
-body,p,div,h1,h2,h3,h4,ul,li,dl,dt,dd,img,span,table,tr,td,th,hr,form,ol,tt,iframe,header,article,footer,tt{ margin:0px; padding:0px;}
 img{ border:none; vertical-align:middle;}
 ul,li,ol{ list-style:none;}
 em,i,address{font-style:normal;}
 .clearfix{zoom:1;display:block}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
-input{font-family:"微软雅黑";}
 input::-ms-clear, input:-ms-clear{ display: none;}
 
 
@@ -61,8 +57,8 @@ div.errorMessage{ float:left;  background-repeat:no-repeat; background-position:
 .sidebar{ width: 880px;}/*侧栏*/
 .column{ width: 300px;}/*主栏*/
 /*文字和链接*/
-a { color: #666; text-decoration: none; outline: none}/*默认*/
-a:hover { color: #18cca0; text-decoration: underline; }
+a { color: #666; text-decoration: none; outline: none}
+a:hover { color: #18cca0; }
 
 .link999 { color: #999;}
 .link666 { color: #666;}
