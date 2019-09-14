@@ -1,0 +1,337 @@
+
+body{ background: #f7f7f7; font: 12px/1.5 "微软雅黑",'Microsoft YaHei',Arial,simsun; color:#5e5e5e;  min-width:1200px;}
+body,p,div,h1,h2,h3,h4,ul,li,dl,dt,dd,img,span,table,tr,td,th,hr,form,ol,tt,iframe,header,article,footer,tt{ margin:0px; padding:0px;}
+img{ border:none; vertical-align:middle;}
+ul,li,ol{ list-style:none;}
+em,i,address{font-style:normal;}
+.clearfix{zoom:1;display:block}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+input{font-family:"微软雅黑";}
+input::-ms-clear, input:-ms-clear{ display: none;}
+
+
+.disnone { display: none;}
+.height5{ height:5px; clear:both; overflow:hidden;}
+.height10{ height:10px; clear:both; overflow:hidden;}
+.height16 { height: 16px; clear: both; overflow: hidden;}
+.height18{ height:18px; clear:both; overflow:hidden;}
+.ml{ margin-left:10px;}
+.mr{ margin-right:10px;}
+.disNone{ display:none;}
+.disBlock{ display:block;}
+
+a.aBlue{color:#0085ec;}/*蓝色*/
+a.aBlue:hover{ color:#34c400;}
+a.aGreen{color:#34c400;}/*绿色*/
+a.aGreen:hover{ color:#f60;}
+a.aOran{color:#f60;}/*橙色*/
+a.aOran:hover{ color:#f60;}
+a.aGray{color:#a5a5a5;}/*灰色*/
+a.aGray:hover{ color:#34c400;}
+.fontGray{color:#a5a5a5;}/*灰色*/
+.fontBlue{color:#0085ec;}/*蓝色*/
+.fontGreen{color:#34c400;}/*绿色*/
+.fontOran{color:#f60;}/*橙色*/
+
+
+i,.indexBaiyi .closeBar,#footer .right dl dd a,.backToTop,.counterLayer,.footerAlert a,#adLayer a.adLayerBg,.qqLayer,#adLayer .ask .askClass .bottom .fl a,label.error,div.errorMessage,.formBnt .error, #affirmInfo .formUl .formLi .error{ background:url(../src/publicIcon.png);}
+
+/*分页*/
+.pageClass{ float:left; width:100%; padding:50px 0; text-align:center;}
+.pageClass a{ display:inline-block; height:30px; width:30px; text-align:center; line-height:30px; font-size:14px; background:#e4f5ff; border-radius:3px;}
+.pageClass span{ display:inline-block; height:30px; width:30px; text-align:center; line-height:30px; color:#fff; background:#0085d4; font-size:14px; border-radius:3px;}
+/*表单*/
+input{box-shadow:none; -webkit-box-shadow:none; font-size:14px; outline:none; font-family:"微软雅黑"}
+
+label.error{ display:none; background-repeat:no-repeat; background-position:0 -1778px; line-height:42px; color:#f60; font-size:14px; padding-left:20px; margin-left:12px;}
+div.errorMessage{ float:left;  background-repeat:no-repeat; background-position:0 -1778px; color:#f60; font-size:14px; padding-left:20px; margin-left:12px;}
+
+/* 老版本待删除的样式 end */
+
+
+/**/
+.fl{ float:left; display: inline;}
+.fr{ float:right; display: inline;}
+.cl { clear: both;}
+.cl_left { clear: left;}
+.disNone{ display:none;}
+.disBlock{ display:block;}
+/*结构*/
+.layout{ width:1200px; margin:0 auto;}/*主体*/
+.sidebar{ width: 880px;}/*侧栏*/
+.column{ width: 300px;}/*主栏*/
+/*文字和链接*/
+a { color: #666; text-decoration: none; outline: none}/*默认*/
+a:hover { color: #18cca0; text-decoration: underline; }
+
+.link999 { color: #999;}
+.link666 { color: #666;}
+.link333 { color: #333;}
+.linkBlur { color: #478fed;}
+.linkWhite { color: #fff;}
+.linkWhite:hover { color: #fff;}
+.linkDeepRed { color: #fa5e3e;}
+.linkGreen { color: #18cca0;}
+
+.fcWhite { color: #fff;}
+.fcYellow { color: #fcc73f;}
+.fc333 { color: #333;}
+.fc666 { color: #666;}
+.fc999 { color: #999;}
+.fcccc { color: #ccc;}
+.fcGreen { color: #18cca0}
+.fcRed { color: #fa5e3e;}
+.fcDeepRed { color: #fa5e3e;}
+.fcBlur { color: #478fed;}
+
+.taCenter { text-align: center;}
+/*按钮和连接*/
+.bntSpan {display:inline-block; padding:5px 0px; height:28px; width:110px; line-height:14px; border-radius:3px; background:#7adb56; color:#fff;font-size:12px; text-align:center;}
+.bntSpan:hover{background:#36c500;}
+
+.bntLink { display:inline-block; padding:5px 0px;  width:110px; height:28px;  line-height:28px;  border-radius:3px; background:#36c500; color:#fff; text-align:center; font-size:16px;}
+.bntLink:hover{background:#4ac916; color:#fff; text-decoration:none;}
+.bntLinkBlue{ display:inline-block; padding:5px 0px;  width:110px; height:28px;  line-height:28px; border-radius:3px; background:#9fd8f9; color:#fff; text-align:center; font-size:16px;}
+.bntLinkBlue:hover{background:#a8daf6; color:#fff; text-decoration:none;}
+/*边框 背景色*/
+.borderGray{ border:#e6e6e6 solid 1px;}/*灰色边框*/
+.bgWhite{ background:#fff;}/*白色背景*/
+.bgGreen { background-color: #18cca0;}
+.bgYellow { background-color: #fcc73f;}
+.bgGold{background-color: #FDCE53;}
+.bgRed { background-color: #fa5e3e;}
+.bgRed2 { background-color: #f54349;}
+.bgBlur { background-color: #478fed;}
+.bgBlur2 { background-color: #69c;}
+.bgGrey { background-color: #999;}
+.bg666 { background-color: #666;}
+.bg333 { background-color: #333;}
+.bgCcc { background-color: #ccc;}
+.bgBlack { background-color: #4d4d4d;}
+.bgDark { background-color: #d9d9d9;}
+.bgOrg { background-color: #f93;}
+/*hover加阴影*/
+.boxShadow:hover{box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);}
+.shadow { box-shadow: 0 1px 3px #e3e3e3; border: 1px solid #e3e3e3;}
+
+.mt5 { margin-top: 5px;}
+.mt10 { margin-top: 10px;}
+.mt30 { margin-top: 30px;}
+.ml30 { margin-left: 30px;}
+
+.mb10 { margin-bottom: 10px;}
+.mb20 { margin-bottom: 20px;}
+
+/*字号*/
+.fz18 { font-size: 18px;}
+.fz60 { font-size: 60px;}
+.fz30 { font-size: 30px;}
+
+/*icon*/
+
+.top .icon, .appDown .detail .icon, header .userTitle .icon, .productType .typeMenu .icon, .questionList .icon, .explosion .nList i,
+.productSortType .sortLi i, .noList i, .helpTip, .helpTip .helpIcon, .productHead .investInfo .footInfo .agreeBtn .icon, .backToTop, 
+.counterLayer, .overDetail h4 i, .perManager .withdrawForm .error i, .changeBank .addCard .addTip i, .changeBank .onlineChannel .addTip i, 
+.dataInfo .last .new, #adLayer a.adLayerBg, .newReward a, .loginOther a i  { background: url(../src/publicIcon.png) no-repeat;}
+
+
+
+
+/*返回顶部*/
+a.backToTop { display: none;height: 50px; width: 50px;line-height: 1.2; position: fixed; _position: absolute; right: 10px; bottom: 160px; _bottom: "auto"; cursor: pointer; z-index:101; background-position: -160px -180px;}
+a.backToTop:hover { background-position: -160px -120px;}
+/*计算器*/
+.counterLayer{ height: 50px; width: 50px; position: fixed; _position: absolute; right: 10px; bottom: 205px; _bottom: "auto"; cursor: pointer; z-index:101; background-position: -220px -180px;}
+.counterLayer:hover { background-position: -220px -120px;}
+
+/*top部分 样式*/
+.top { background: #f7f7f7;}
+.top li { float: left; display: inline; }
+.top li a { display: block; height: 40px; line-height: 40px; text-decoration: none;}
+.topL li { position: relative; z-index: 200; width: 122px;}
+.topL .cgqbApp { display: none;}
+.topL a { position: relative; padding-left: 10px; z-index: 100;}
+.topL .icon { position: absolute; width: 20px; height: 20px; top: 10px; right: 15px;}
+.topL .cgqbApp .icon { background-position: -25px 0;}
+.topL .weixin .icon { right: 20px; background-position: -50px 0;}
+.topL .cusmer { width: 100px;}
+.topL .cusmer a { padding-left: 0;}
+.topL .cusmer .icon { right: 20px; background-position: 0 -60px;}
+.topL img { position: absolute; top: 40px; left: 0; width: 120px; height: 120px; border: 1px solid #e3e3e3;}
+.topL .cusmerQList { position: absolute; top: 40px; left: 0; width: 462px; background-color: #fff; border: 1px solid #e3e3e3; box-shadow: 0 2px 10px #ccc;}
+.topL .cusmerQList dl { padding: 20px;}
+.topL .cusmerQList dt { line-height: 30px; font-size: 16px; color: #333;}
+.topL .cusmerQList dl a { height: 24px; line-height: 24px;}
+.topL .cusmerQFoot { padding: 0 20px; line-height: 50px;}
+.topL .cusmerQFoot a { margin-top: 10px; padding: 0 15px; height: 30px; line-height: 30px; background-color: #fff; border-radius: 5px; color: #18cca0; font-size: 16px;}
+.topR a { padding: 0 10px;}
+
+
+
+.topL a:hover img { display: block;}
+.topL a:hover .icon {
+    animation: rotate360 0.3s linear forwards;
+    -webkit-animation: rotate360 0.3s linear forwards;
+    -moz-animation: rotate360 0.3s linear forwards;
+    -ms-animation: rotate360 0.3s linear forwards;
+    -o-animation: rotate360 0.3s linear forwards;
+    background-position: 0 -30px;
+}
+.topL .cgqbApp a:hover .icon { background-position: -25px -30px;}
+.topL .weixin a:hover .icon { background-position: -50px -30px;}
+.topL .cusmer a:hover .icon { background-position: 0 -90px;}
+
+
+@keyframes rotate360 {
+    100% { transform: rotate(360deg);}
+}
+
+@-webkit-keyframes rotate360 {
+    100% { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes rotate360 {
+    100% { -moz-transform: rotate(360deg);}
+}
+
+@-ms-keyframes rotate360 {
+    100% { -ms-transform: rotate(360deg);}
+}
+
+@-o-keyframes rotate360 {
+    100% { -o-transform: rotate(360deg);}
+}
+
+/*翻页*/
+.pageList { padding-top: 50px; text-align: center; font-size: 14px; }
+.pageList a, .pageList span { display: inline-block; margin: 0 3px; width: 30px; height: 30px; line-height: 30px; background-color: #fff; color: #333;}
+.pageList .page:hover { color: #18cca0; text-decoration: none;}
+.pageList .previous, .pageList .next, .pageList span { background-color: #18cca0; color: #fff;}
+
+
+/* 20151107 交易密码弹出框 */
+#guideBg{position: fixed; width:100%; height:100%; background:#000; top:0px; left:0px; _position: absolute; filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7; z-index:10000}
+.customAlertContent .close, .customAlertContent .tipText i, .customAlertContent .payPwdResult i, .customAlertContent .addDepositForm .selectIcon, .customAlertContent .radioDiv .radioIcon, .resultAlert h4 i, .zrResult i { background: url(../src/payPwdAlertIcon.png) no-repeat;}
+.customAlert { z-index: 100001; position: fixed; _position: absolute; top: 50%; left: 50%; margin-top: -226px; margin-left: -376px; width: 750px; height: 450px; background-color: #fff; border: 1px solid #d5d5d5;}
+.customAlertContent { position: relative;}
+.customAlertContent .close { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background-position: 5px 6px;}
+.customAlertContent .close:hover { background-position: -40px 0;}
+.customAlertContent .goBack { position: absolute; top: 10px; right: 10px; width: 60px; height: 30px; line-height: 30px; border-radius: 5px; text-align: center; color: #999; text-decoration: none;}
+.customAlertContent .goBack:hover { background-color: #47cead; color: #fff;}
+
+.customAlertContent h4 { padding-top: 85px; font-size: 16px; color: #666; text-align: center;}
+.customAlertContent .payPwdForm { margin-top: 30px;}
+.customAlertContent .inputDiv, .customAlertContent label, .customAlertContent input, .customAlertContent .inputTextBg { float: left; display: inline;}
+.customAlertContent .inputDiv { margin-bottom: 20px; width: 100%;}
+.customAlertContent label, .customAlertContent input { height: 40px; line-height: 40px; font-size: 14px; }
+.customAlertContent .inputLabel { margin-right: 20px; padding: 0; width: 210px; text-align: right;}
+.customAlertContent input { width: 302px; border-radius: 3px; }
+.customAlertContent .inputText { padding: 10px 0 10px 20px; width: 280px; height: 20px; line-height: 20px; background: transparent; border: #ccc solid 1px; color: #999; overflow: hidden;}
+.customAlertContent .inputHidden { display: none;}
+.customAlertContent .pwdLetter { padding-left: 40px; width: 260px; letter-spacing: 34px; }
+.customAlertContent .inputFocus { border-color: #47cead;}
+.customAlertContent .inputErr { border-color: #cc555b;}
+.customAlertContent .tipText { float: left; display: none; height: 40px; line-height: 40px; font-size: 12px; color: #f54349;}
+.customAlertContent .tipText i { float: left; display: inline; margin: 11px 0 0 10px; width: 20px; height: 16px; background-position: -73px 0;}
+.customAlertContent .tipText .errorMessage { margin: 0; padding: 0; background: none; font-size: 12px; color: #f54349;}
+.customAlertContent .tipErr { display: inline;}
+.customAlertContent .tipErr i { background-position: -95px 0;}
+.customAlertContent .tipSuc { display: inline;}
+.customAlertContent .tipSuc span { display: none;}
+.customAlertContent .inputNotice { margin-bottom: 30px; margin-left: 230px; color: #999;}
+.customAlertContent .alertBtn { margin-left: 230px; height: 42px; background-color: #47cead; border: none 0; color: #fff; font-size: 16px; cursor: pointer;}
+.customAlertContent .notGo { background-color: #ccc;}
+.customAlertContent .payPwdResult { display: none; padding-top: 100px;}
+.customAlertContent .payPwdResult i, .zrResult i { display: block; margin: 0 auto; width: 115px; height: 115px; background-position: -240px 0;}
+.customAlertContent .payPwdResult .errIcon, .zrResult .errIcon { background-position: -120px 0;}
+.customAlertContent .payPwdResult h4 { padding-top: 15px;}
+.customAlertContent .payPwdResult .alertBtn { display: block; margin-top: 40px; width: 302px; line-height: 42px; text-align: center; border-radius: 3px; text-decoration: none;}
+.customAlertContent .checkPwdForm { display: none;}
+.customAlertContent .checkPwdForm h4 { padding-top: 100px;}
+.customAlertContent .checkPwdForm .checkForm { margin-top: 70px;}
+.customAlertContent .forget { text-align: center;}
+
+.rechargeAlert h4 { padding-top: 50px;}
+.customAlertContent .notice { padding-top: 10px; line-height: 30px; text-align: center; font-size: 12px; color: #999;}
+.customAlertContent .addDepositForm { margin: 0 auto; width: 500px; height: 220px; border: 1px #d5d5d5 dashed;}
+.customAlertContent .addDepositForm li { margin-top: 15px;}
+.customAlertContent .addDepositForm .inputName { padding-right: 12px; width: 90px; height: 38px; line-height: 38px;}
+.customAlertContent .addDepositForm .bankName { line-height: 38px; font-size: 14px;}
+.customAlertContent .addDepositForm .bankIcon { display: inline; margin: 5px 0 0 0;}
+.customAlertContent .addDepositForm .bankIcon img { margin-left: 100px;}
+.customAlertContent .addDepositForm select { height: 38px;}
+.customAlertContent .addDepositForm .select { position: relative; z-index: 2; float: left; display: inline;}
+.customAlertContent .addDepositForm .inputText { padding: 0 10px; height: 38px; line-height: 38px;}
+.customAlertContent .addDepositForm .selectIcon { position: absolute; top: 0; right: 0; width: 14px; height: 28px; background-position: -362px 9px;}
+.customAlertContent .addDepositForm .customSelect { width: 350px;}
+.customAlertContent .addDepositForm .selectUl { position: absolute; display: none; top: 38px; left: 0; width: 99.5%; max-height: 130px; background-color: #fff; border: 1px solid #d5d5d5; font-size: 14px; overflow: auto;}
+.customAlertContent .addDepositForm .selectUl ul { width: 100%;}
+.customAlertContent .addDepositForm .selectUl li { margin-top: 0; width: 100%; height: 24px; line-height: 24px; text-indent: 10px;}
+.customAlertContent .addDepositForm .selectListShow { display: block;}
+.customAlertContent .addDepositForm .selectUl .liHover { background-color: #47cead; color: #fff; cursor: pointer;}
+.customAlertContent .addDepositForm .selectUl .loadding { text-align: center; padding-top: 15px; color: #f60;}
+.customAlertContent .addDepositForm .selectUl .loadding img { width: 100px; }
+.customAlertContent .radioDiv { margin: 20px 0 10px; margin-left: 250px;  }
+.customAlertContent .radioDiv a { position: relative; display: inline-block; height: 30px; line-height: 30px; color: #999; text-decoration: none;}
+.customAlertContent .radioDiv .radioIcon { position: absolute; top: 8px; left: -20px; width: 14px; height: 14px; background-position: -400px 0;}
+.customAlertContent .radioDiv .radioCurr i { background-position: -380px 0;}
+.customAlertContent .alertBtn { width: 290px; border-radius: 3px;}
+/*20160316 第三方改造需求*/
+.makeSure h4 { padding-top: 60px;}
+.customAlertContent .makeSureForm { margin: 0 auto; width: 302px; }
+.customAlertContent .makeSureForm .alertBtn { margin: 0; width: 100%;}
+.customAlertContent .makeSureForm .bankInfo { height: 40px; line-height: 40px; border: 1px dashed #e3e3e3; border-radius: 5px;}
+.customAlertContent .makeSureForm .bankInfo img { vertical-align: -6px;}
+.customAlertContent .makeSureForm .codeInput .inputText { background-color: #f7f7f7;}
+.customAlertContent .codeText { padding: 40px 0 15px; font-size: 14px;}
+.customAlertContent .makeSureForm .inputDiv { position: relative;}
+.customAlertContent .makeSureForm .getCode { position: absolute; top: 5px; right: 5px; padding: 0 10px; min-width: 40px; height: 30px; line-height: 30px; background-color: #47cead; border: 1px solid #47cead; border-radius: 5px; text-decoration: none; color: #fff;}
+.customAlertContent .makeSureForm .going { background-color: #ccc; border: 1px solid #e3e3e3;}
+
+
+
+.resultAlert { margin-top: -100px; margin-left: -170px; width: 340px; height: 185px; text-align: center;}
+.resultAlert h4 { padding: 25px 0 10px; line-height: 50px; text-indent: -20px; font-size: 18px; color: #333; font-weight: bold;}
+.resultAlert h4 i { display: inline-block; margin-right: 5px; width: 50px; height: 50px; background-position: 0 -40px; vertical-align: -17px;}
+.resultAlert .errText { height: 55px; font-size: 14px; color: #666;}
+.resultAlert .footBtn { border-top: 1px solid #e3e3e3;}
+.resultAlert .footBtn a { display: block; height: 45px; line-height: 45px; font-size: 16px; color: #333; text-decoration: none;}
+
+.payAlert { margin-top: -180px; height: 360px; text-align: center;}
+.payAlert h4 { padding-top: 100px;}
+.payAlert .payText { padding: 30px 0 50px; font-size: 14px; color: #666;}
+.payAlert .footBtn a { display: inline-block; margin:  0 20px; width: 200px; height: 40px; line-height: 40px; border: 1px solid #e3e3e3; border-radius: 5px; font-size: 16px; text-decoration: none;}
+.payAlert .footBtn .btnGreen { background-color: #47cead; border: 1px solid #47cead; color: #fff;}
+
+/*转让撤销需求*/
+.zrResult { margin-top: -226px; height: 450px;}
+.zrResult .zrIcon { padding-top: 50px;}
+.zrResult h4 { padding-top: 50px;}
+
+.bLun a { height: 99px; overflow: hidden;}
+.bLun .logo img { margin: 0;}
+.bLun nav { margin-left: -20px;}
+
+
+
+
+
+/*右侧联系客服 浮层*/
+/*
+#adLayer{position:fixed; bottom:220px; right:6px; z-index:1000; width:50px;  _position:absolute; _bottom:0; _position:absolute;_bottom:auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||165)-(parseInt(this.currentStyle.marginBottom, 10)||30)));}
+*/
+#adLayer{position:fixed; top: 50%; margin-top: -72px; right:6px; z-index:1000; width:50px; }
+#adLayer a.adLayerBg { float:right; width: 50px; height: 50px; background-position: -280px -180px; cursor: pointer;}
+#adLayer a.adLayerBg:hover{background-position: -280px -120px;}
+#adLayer .askClass{  width:484px;  overflow:hidden; display:none;}
+#adLayer .cusmerQList { position:absolute; margin-top:-240px; margin-right:50px; width: 462px; background-color: #fff; border: 1px solid #e3e3e3; box-shadow: 0 2px 10px #ccc;}
+#adLayer .cusmerQList dl { padding: 20px;}
+#adLayer .cusmerQList dt { line-height: 30px; font-size: 16px; color: #333;}
+#adLayer .cusmerQList dl a { display: block; height: 24px; line-height: 24px;}
+#adLayer .cusmerQFoot { padding: 0 20px; line-height: 50px;}
+#adLayer .cusmerQFoot a { margin-top: 10px; padding: 0 15px; height: 30px; line-height: 30px; background-color: #fff; border-radius: 5px; color: #18cca0; font-size: 16px; text-decoration: none;}
+
+/*右侧新人红包 浮层*/
+.newReward { position: fixed; top: 50%; margin-top: -120px; z-index: 999; right: 6px; }
+.newReward a { float: right; display: inline; width: 50px; height: 50px; background-position: -340px -180px; cursor: pointer;}
+.newReward a:hover { background-position: -340px -120px;}
