@@ -1,6 +1,7 @@
 
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
     <!--====== TEACHERS PART START ======-->
     
@@ -145,32 +146,6 @@
                                         <h6>Student Reviews</h6>
                                     </div>
                                     <ul>
-                                       <li>
-                                           <div class="single-reviews">
-                                                <div class="reviews-author">
-                                                    <div class="author-thum">
-                                                        <img src="{% static 'images/review/r-1.jpg' %}" alt="Reviews">
-                                                    </div>
-                                                    <div class="author-name">
-                                                        <h6>Bobby Aktar</h6>
-                                                        <span>April 03, 2019</span>
-                                                    </div>
-                                                </div>
-                                                <div class="reviews-description pt-20">
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                                                    <div class="rating">
-                                                        <ul>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                        <span>/ 5 Star</span>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- single reviews -->
-                                       </li>
                                        {% for item in lecturer_rating_list %}
                                        <li>
                                             <div class="single-reviews">
@@ -207,15 +182,19 @@
                                         <form method="POST" action="{% url 'teachers-rating' %}">
                                             {% csrf_token %}
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <!-- <div class="col-md-6">
                                                         <div class="form-single">
                                                             <input type="text" placeholder="Fast name">
-                                                            Your Rating: {{ rating_form.rating }}
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-single">
                                                             <input type="text" placeholder="Last Name">
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="col-md-12">
+                                                        <div class="form-single">
+                                                            Your Rating: {{ rating_form.rating }}
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12">
