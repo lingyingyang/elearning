@@ -52,11 +52,11 @@ def courses_list(request):
 @cache_page(60 * 15)
 @vary_on_cookie
 def courses_cb(request):
-    # get enrolled subjects of current user
-    recommmend_list = get_recommmend_list(user=request.user)
-
-    # put recommmend_list into session
-    request.session['recommmend_list'] = recommmend_list
+    # get cb list
+    recommmend_list = request.session.get('recommmend_list')
+    if recommmend_list is None:
+        recommmend_list = get_recommmend_list(request.user)
+        request.session['recommmend_list'] = recommmend_list
 
     # Pagination
     paginator = Paginator(recommmend_list, 6)
@@ -74,11 +74,13 @@ def courses_cb(request):
 def course_single(request, course_id):
     #course = Course.objects.get(pk=course_id);
     course = get_object_or_404(Subject, pk=course_id)
+
+    # get cb list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
         recommmend_list = get_recommmend_list(request.user)
-    print("=================recommmend_list=====")
-    print(recommmend_list)
+        request.session['recommmend_list'] = recommmend_list
+
     random_items = [recommmend_list[random.randrange(len(recommmend_list))]
                     for item in range(2)]
     context = {
@@ -91,7 +93,27 @@ def course_single(request, course_id):
 
 @login_required
 def course_progress(request):
-    context = {'courses_progress_page': 'active'}
+    # get cb list
+    recommmend_list = request.session.get('recommmend_list')
+    if recommmend_list is None:
+        recommmend_list = get_recommmend_list(request.user)
+        request.session['recommmend_list'] = recommmend_list
+
+    # get enrolled subject list
+    current_student = Student.objects.get(account=request.user.id)
+    enrolled_course_list = Enrollment.objects.filter(
+        student=current_student.id)
+    remain_course_list = enrolled_course_list[2:None]
+    enrolled_course0 = enrolled_course_list[0]
+    enrolled_course1 = enrolled_course_list[1]
+
+    context = {
+        'courses_progress_page': 'active',
+        'recommended_courses_cb': recommmend_list[0:4],
+        'enrolled_course0': enrolled_course0,
+        'enrolled_course1': enrolled_course1,
+        'remain_course_list': remain_course_list[0:7]
+    }
     return render(request, 'courses-progress.html', context)
 
 

@@ -4,14 +4,6 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static 'dashboard/css/dashboard-style.css' %}">
 <link rel="stylesheet" href="{% static 'dashboard/css/index.css' %}">
-<link rel="stylesheet" href="{% static 'dashboard/css/swiper.min.css' %}">
-<link rel="stylesheet" href="{% static 'dashboard/css/dialog.css' %}">
-<link rel="stylesheet" href="{% static 'dashboard/css/jquery.mloading.css' %}">
-{% endblock %}
-
-{% block js %}
-<script src="{% static 'dashboard/js/dialog.min.js' %}"></script>
-<script src="{% static 'dashboard/js/jquery.mloading.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -46,8 +38,8 @@
         <!-- start -->
         <aside class="fl areaType bgWhite newer">
             <div class="areaName">
-                <h4>class_1</h4>
-                <a class="link_t link999" href="#" target="_blank">info&gt;</a>
+                <h4>{{ enrolled_course0.subject.name }}</h4>
+                <a class="link_t link999" href="{% url 'courses-single' enrolled_course0.subject.id %}">info&gt;</a>
             </div>
             <div class="clearfix">
                 <p class="notice fl">
@@ -65,7 +57,7 @@
                     </p>
                 </div>
             </div>
-            <a class="link_c link333" href="#" target="_blank">go ahead &gt;</a>
+            <a class="link_c link333" href="{% url 'courses-single' enrolled_course0.subject.id %}">go ahead &gt;</a>
         </aside>
         <!--end -->
         <!-- tart -->
@@ -74,8 +66,8 @@
 
         <aside class="fl areaType bgWhite boom">
             <div class="areaName">
-                <h4>class_2</h4>
-                <a class="link_t link999" href="#">info &gt;</a>
+                <h4>{{ enrolled_course1.subject.name }}</h4>
+                <a class="link_t link999" href="{% url 'courses-single' enrolled_course1.subject.id %}">info &gt;</a>
             </div>
             <div class="clearfix">
                 <div class="detail">
@@ -101,28 +93,18 @@
         <!-- end -->
         <aside class="fl areaType bgWhite noticeList">
             <div class="areaName">
-                <h4>class_list</h4>
+                <h4>Enrolled Subject List</h4>
                 <a class="link_t link999" href="#">info&gt;</a>
             </div>
             <ul class="clearfix nList cgNotice">
+                {% for item in remain_course_list %}
                 <li>
-                    <a href="#">
-                        class_3
+                    <a href="{% url 'courses-single' item.subject.id %}">
+                        {{ item.subject.name }}
                     </a>
                     <span class="fc666 data">02-23</span>
                 </li>
-                <li>
-                    <a href="#">
-                        class_4
-                    </a>
-                    <span class="fc666 data">02-23</span>
-                </li>
-                <li>
-                    <a href="#">
-                        class_5
-                    </a>
-                    <span class="fc666 data">02-23</span>
-                </li>
+                {% endfor %}
             </ul>
         </aside>
     </div>
@@ -132,9 +114,9 @@
 <section class="areaList productList youxuan">
     <div class="layout">
         <div class="listCon bgWhite clearfix">
-            <a class="fl areaType" href="#">
+            <a class="fl areaType" href="{% url 'course-cb' %}">
                 <div class="areaName">
-                    <h4>You may interested</h4>
+                    <h4>Recommended Subjects</h4>
                 </div>
                 <p class="notice fc333">
                     content based
@@ -143,18 +125,19 @@
             </a>
             <article class="fl">
                 <ul class="pList fl">
+                    {% for course in recommended_courses_cb %}
                     <li class="bgWhite">
-                        <a href="#" onclick="addCart('1')">
+                        <a href="{% url 'courses-single' course.id %}">
                             <div class="hBk">
                             </div>
-                            <h4>$ 40</h4>
+                            <h4>{{ course.name }}</h4>
                             <div class="pContent">
                                 <div class="rateInfo">
                                     <img src="xxxx" style="width: 115px;height: 115px" alt="">
                                     <span class="rate fcDeepRed "></span>
                                 </div>
                                 <div class="view downTimeC">
-                                    <span class="link333 link_s">add in chart</span>
+                                    <span class="link333 link_s">detail</span>
                                 </div>
                                 <!--<span class="icon" style="background:none;"><img src="unpan/blue/src/model1.png" style="height: 100%; width: 100%;"></span>-->
                             </div>
@@ -162,63 +145,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="bgWhite">
-                        <a href="#" onclick="addCart('2')">
-                            <div class="hBk">
-                            </div>
-                            <h4>$ 40</h4>
-                            <div class="pContent">
-                                <div class="rateInfo">
-                                    <img src="xxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed "></span>
-                                </div>
-                                <div class="view downTimeC">
-                                    <span class="link333 link_s">add in chart</span>
-                                </div>
-                                <!--<span class="icon" style="background:none;"><img src="unpan/blue/src/model1.png" style="height: 100%; width: 100%;"></span>-->
-                            </div>
-                            <div class="fBk">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bgWhite">
-                        <a href="#" onclick="addCart('4')">
-                            <div class="hBk">
-                            </div>
-                            <h4>$ 40</h4>
-                            <div class="pContent">
-                                <div class="rateInfo">
-                                    <img src="xxxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed "></span>
-                                </div>
-                                <div class="view downTimeC">
-                                    <span class="link333 link_s">add in chart</span>
-                                </div>
-                                <!--<span class="icon" style="background:none;"><img src="unpan/blue/src/model1.png" style="height: 100%; width: 100%;"></span>-->
-                            </div>
-                            <div class="fBk">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bgWhite">
-                        <a href="#" onclick="addCart('5')">
-                            <div class="hBk">
-                            </div>
-                            <h4>$ 40</h4>
-                            <div class="pContent">
-                                <div class="rateInfo">
-                                    <img src="xxxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed "></span>
-                                </div>
-                                <div class="view downTimeC">
-                                    <span class="link333 link_s">add in chart</span>
-                                </div>
-                                <!--<span class="icon" style="background:none;"><img src="unpan/blue/src/model1.png" style="height: 100%; width: 100%;"></span>-->
-                            </div>
-                            <div class="fBk">
-                            </div>
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </article>
         </div>
@@ -231,7 +158,7 @@
         <div class="listCon bgWhite clearfix">
             <a class="fl areaType" href="#">
                 <div class="areaName">
-                    <h4>You may interested</h4>
+                    <h4>Recommended Subjects</h4>
                 </div>
                 <p class="notice fc333">
                     CF
@@ -252,7 +179,7 @@
                                     </span>
                                 </div>
                                 <div class="view">
-                                    <span class="link333 link_s">add in chart</span>
+                                    <span class="link333 link_s">detail</span>
                                 </div>
                                 <span class="icon2"></span>
                             </div>
@@ -272,7 +199,7 @@
                                     </span>
                                 </div>
                                 <div class="view">
-                                    <span class="link333 link_s">add in chart</span>
+                                    <span class="link333 link_s">detail</span>
                                 </div>
                                 <span class="icon2"></span>
                             </div>
@@ -292,7 +219,7 @@
                                     </span>
                                 </div>
                                 <div class="view">
-                                    <span class="link333 link_s">add in chart</span>
+                                    <span class="link333 link_s">detail</span>
                                 </div>
                                 <span class="icon2"></span>
                             </div>
@@ -312,7 +239,7 @@
                                     </span>
                                 </div>
                                 <div class="view">
-                                    <span class="link333 link_s">add in chart</span>
+                                    <span class="link333 link_s">detail</span>
                                 </div>
                                 <span class="icon2"></span>
                             </div>
@@ -325,89 +252,6 @@
         </div>
     </div>
 </section>
-
-
-<!-- 在线客服浮层 start -->
-<div id="adLayer" style="width: 50px;">
-    <div class="ask ">
-        <a href="#" class="adLayerBg"></a>
-        <div class="askClass cusmerQList" style="display: none;">
-            <dl>
-                <dt>Frequently asked questions you may have?
-                </dt>
-                <dd>
-                    <a href="#" target="_blank">Is there any UTS school introduction?</a>
-                    <a href="#" target="_blank">How to register an account?</a>
-                    <a href="#" target="_blank">What are the majors in the school?</a>
-                    <a href="#" target="_blank">How long is the registration usually in advance?</a>
-                    <a href="#" target="_blank">What should I do if my password is forgotten?</a>
-                    <a href="#" target="_blank"></a>
-                    <a href="#" target="_blank"></a>
-                </dd>
-            </dl>
-            <div class="clearfix cusmerQFoot bgGreen">
-                <span class="fl fcWhite">Service Time：9:00-18:00</span>
-                <a class="fr" href="#" target="_blank">Online Service</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 在线客服浮层 -->
-<!--[if IE 6]>
-        <script src="unpan/bule/js/png24.js"></script>
-        <script>
-            DD_belatedPNG.fix('*');
-        </script>
-        <![endif]-->
-<!-- <script type="text/javascript" src="unpan/blue/js/public.js"></script>
-<script src="unpan/blue/js/swiper.min.js"></script> -->
-<script type="text/javascript">
-    var galleryTop = new Swiper('.gallery-top', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 10,
-        loop: true,
-        autoplay: 3000,
-        paginationClickable: true,
-        pagination: '.imgBanner .pagination'
-    });
-    var noticeList = new Swiper('.noticeList .swiper-container', {
-        spaceBetween: 10,
-        loop: true,
-        mode: 'vertical',
-        autoplay: 3000
-    });
-    $(function () {
-        var pageList = $(".swiper-pagination-switch").length;
-        var pageWidth = (1200 - pageList) / pageList;
-        pageWidth = Math.floor(pageWidth * 100) / 100
-        $(".swiper-pagination-switch, .menu_banner .textList span").css("width", pageWidth);
-        $(".menu_banner .textList span").bind("click", function () {
-            var $this = $(this);
-            var liIndex = $this.index(".menu_banner .textList span");
-            $(".swiper-pagination-switch").eq(liIndex).click();
-        });
-        $(".youxuan .areaType, .xiaofei .areaType").hover(function () {
-            $(this).parents(".listCon").addClass("curr");
-        }, function () {
-            $(this).parents(".listCon").removeClass("curr");
-        })
-    })
-    function addCart(id) {
-        $('body').mLoading('show');
-        $.post('/shop/shop-info', { sid: id }, function (data) {
-            if (data.code == 1) {
-                $('body').mLoading('hide');
-                success(data.msg, function () {
-                })
-            } else {
-                $('body').mLoading('hide');
-                error(data.msg, function () {
-                })
-            }
-        })
-    }
-</script>
 
 
 {% endblock content %}
