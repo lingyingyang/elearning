@@ -34,7 +34,8 @@
 
 <!-- 公告 start -->
 <section class="areaList explosion mt-60">
-    <div class="layout clearfix">
+    <div class="container clearfix">
+        <div class="row">
         <!-- start -->
         <aside class="fl areaType bgWhite newer">
             <div class="areaName">
@@ -60,10 +61,7 @@
             <a class="link_c link333" href="{% url 'courses-single' enrolled_course0.subject.id %}">go ahead &gt;</a>
         </aside>
         <!--end -->
-        <!-- tart -->
-
-
-
+        <!-- start -->
         <aside class="fl areaType bgWhite boom">
             <div class="areaName">
                 <h4>{{ enrolled_course1.subject.name }}</h4>
@@ -107,13 +105,14 @@
                 {% endfor %}
             </ul>
         </aside>
+        </div>
     </div>
 </section>
 <!-- end -->
 <!-- start -->
 <section class="areaList productList youxuan">
-    <div class="layout">
-        <div class="listCon bgWhite clearfix">
+    <div class="container">
+        <div class="listCon bgWhite clearfix row">
             <a class="fl areaType" href="{% url 'course-cb' %}">
                 <div class="areaName">
                     <h4>Recommended Subjects</h4>
@@ -154,8 +153,8 @@
 <!-- end -->
 <!-- start -->
 <section class="areaList productList xiaofei">
-    <div class="layout">
-        <div class="listCon bgWhite clearfix">
+    <div class="container">
+        <div class="listCon bgWhite clearfix row">
             <a class="fl areaType" href="#">
                 <div class="areaName">
                     <h4>Recommended Subjects</h4>
