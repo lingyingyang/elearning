@@ -30,7 +30,7 @@ a.aGray:hover{ color:#34c400;}
 .fontOran{color:#f60;}/*橙色*/
 
 
-i,.indexBaiyi .closeBar,#footer .right dl dd a,.backToTop,.counterLayer,.footerAlert a,#adLayer a.adLayerBg,.qqLayer,#adLayer .ask .askClass .bottom .fl a,label.error,div.errorMessage,.formBnt .error, #affirmInfo .formUl .formLi .error{ background:url(../src/publicIcon.png);}
+/* i,.indexBaiyi .closeBar,#footer .right dl dd a,.backToTop,.counterLayer,.footerAlert a,#adLayer a.adLayerBg,.qqLayer,#adLayer .ask .askClass .bottom .fl a,label.error,div.errorMessage,.formBnt .error, #affirmInfo .formUl .formLi .error{ background:url(../src/publicIcon.png);} */
 
 /*分页*/
 .pageClass{ float:left; width:100%; padding:50px 0; text-align:center;}
@@ -128,9 +128,6 @@ a:hover { color: #18cca0; }
 .top .icon, .appDown .detail .icon, header .userTitle .icon, .productType .typeMenu .icon, .questionList .icon, .explosion .nList i,
 .productSortType .sortLi i, .noList i, .helpTip, .helpTip .helpIcon, .productHead .investInfo .footInfo .agreeBtn .icon, .backToTop, 
 .counterLayer, .overDetail h4 i, .perManager .withdrawForm .error i, .changeBank .addCard .addTip i, .changeBank .onlineChannel .addTip i, 
-.dataInfo .last .new, #adLayer a.adLayerBg, .newReward a, .loginOther a i  { background: url(../src/publicIcon.png) no-repeat;}
-
-
 
 
 /*返回顶部*/
