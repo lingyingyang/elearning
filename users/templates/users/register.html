@@ -33,9 +33,6 @@
         <div class="row">
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
-                    <div class="login-register-tab-list nav">
-                        <h4>register</h4>
-                    </div>
                     <div class="tab-content">
                         <div class="login-form-container">
                             <div class="login-register-form">
@@ -48,14 +45,15 @@
                                     <div class="button-box">
                                         <button class="default-btn" type="submit"><span>Register</span></button>
                                     </div>
+                                    <div class="pt-3">
+                                        <small class="text-muted">
+                                            Already Have An Account? <a class="ml-2" href="{% url 'users-login' %}">Sign In</a>
+                                        </small>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="border-top pt-3">
-                            <small class="text-muted">
-                                Already Have An Account? <a class="ml-2" href="{% url 'users-login' %}">Sign In</a>
-                            </small>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

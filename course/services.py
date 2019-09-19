@@ -21,9 +21,7 @@ def get_recommmend_list(user):
         if subject_list.count() < 1:
             recommmend_list = get_random_list()
         else:
-            # get first subject id for testing
-            subjectId = subject_list[0]
-            recommmend_list = get_from_cb_by_subjectId(subjectId)
+            recommmend_list = get_from_cb_by_subjectId(subject_list)
     else:
         # unauthenticated user random 10 recommended list
         recommmend_list = get_random_list()
@@ -38,19 +36,25 @@ def get_random_list():
     return context
 
 
-def get_from_cb_by_subjectId(subjectId):
+def get_from_cb_by_subjectId(subject_list):
     df = DataFrame(list(Subject.objects.values('name', 'category__name')))
 
     # Data cleaning
+    enrolled_key_words = ""
     df['name_keywords'] = ""
     for index, row in df.iterrows():
         name = row['name']
         r = Rake()
         r.extract_keywords_from_text(name)
         keywords_dict = r.get_word_degrees()
-        row['name_keywords'] = ' '.join(list(keywords_dict.keys()))
+        name_keywords_str = ' '.join(list(keywords_dict.keys()))
+        row['name_keywords'] = name_keywords_str
+        if index+1 in subject_list:
+            enrolled_key_words += name_keywords_str + " " + row['category__name'] + " "
+    print("===enrolled_key_words==="+enrolled_key_words)
     print(df.head())
     df['key_words'] = df['name_keywords'] + ' ' + df['category__name'].map(str)
+    df = df.append({'key_words': enrolled_key_words}, ignore_index=True)
 
     print("===================df========================")
     print(df.head())
@@ -63,7 +67,7 @@ def get_from_cb_by_subjectId(subjectId):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     print("=====================cosine_sim======================")
     print(cosine_sim)
-    rd_list = recommendations(subjectId, df, cosine_sim)
+    rd_list = recommendations(subject_list, df, cosine_sim)
     print("=====================rd======================")
     print(rd_list)
 
@@ -79,7 +83,8 @@ def get_subjects_by_rd(recommmend_list):
     return context
 
 
-def recommendations(subjectID, df, cosine_sim):
+def recommendations(subject_list, df, cosine_sim):
+    enrolledIndex = df.shape[0] - 1
     indices = pd.Series(df.index)
     print(indices)
 
@@ -87,19 +92,27 @@ def recommendations(subjectID, df, cosine_sim):
     recommended_subjects = []
 
     # gettin the index of the subject that matches the id
-    idx = indices[indices == subjectID].index[0]
+    idx = indices[indices == enrolledIndex].index[0]
 
     # creating a Series with the similarity scores in descending order
     score_series = pd.Series(cosine_sim[idx]).sort_values(ascending=False)
     print("=====================one pd series======================")
     print(score_series)
 
-    # getting the indexes of the 10 most similar subjects
+    # select top 10 recommended subjects that are not in the enrolled subject list 
+    for items in score_series.iteritems():
+        if len(recommended_subjects) > 9:
+            break
+        indx = items[0]
+        if indx is not enrolledIndex:
+            subjectId = indx + 1
+            if subjectId not in subject_list:
+                recommended_subjects.append(subjectId)
+
     # top_10_indexes = list(score_series.iloc[1:11].index)
-    top_10_indexes = list(score_series.iloc[1:11].index)
 
     # populating the list with the ids of the best 10 matching subjects
-    for i in top_10_indexes:
-        recommended_subjects.append(list(df.index)[i])
+    # for i in top_10_indexes:
+    #     recommended_subjects.append(list(df.index)[i])
 
     return recommended_subjects
