@@ -3,7 +3,13 @@
 {% load crispy_forms_tags %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'users/css/login-register.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/users_style.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'users/js/modernizr-2.8.3min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
