@@ -3,34 +3,33 @@
 {% load crispy_forms_tags %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'users/css/plugins.css' %}">
-    <link rel="stylesheet" href="{% static 'users/css/icons.min.css' %}">
     <link rel="stylesheet" href="{% static 'users/css/users_style.css' %}">
 {% endblock %}
 
-{% block js %}
-<script src="{% static 'users/js/modernizr-2.8.3min.js' %}"></script>
-{% endblock %}
-
-
 {% block content %}
+<!--====== PAGE BANNER PART START ======-->
+    
+<section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url('/static/images/page-banner-1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-banner-cont">
+                    <h2>Login</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'course-home' %}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Login</li>
+                        </ol>
+                    </nav>
+                </div>  <!-- page banner cont -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
 
-<div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95" style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
-        <div class="container">
-            <h2>Login</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .</p>
-        </div>
-    </div>
-    <div class="breadcrumb-bottom">
-        <div class="container">
-            <ul>
-                <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>login</span></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="login-register-area pt-130 pb-130">
+<!--====== PAGE BANNER PART ENDS ======-->
+
+<div class="login-register-area pt-60 pb-60">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
