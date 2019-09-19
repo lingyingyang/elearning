@@ -6,25 +6,28 @@ http://127.0.0.1:8000/admin/  test account: admin/test1234@
 ## Cloud - AWS EC2
 http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/ test account: yiliang / abcd1234@  
 http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/admin test account: admin / test1234@  
+# Development
 ## Components
-1. list page of courses 课程页面展示
-2. detail page of course 课程列表展示
-3. info page of staff 老师基本信息
-4. info page of student 学生基本信息
-5. course progress of student 学生的课程进度
-6. course recommendation for student 学生的课程推荐
-## Install Django 
-`python -m pip list` 
-`python -m django --version`  
-### Dependencies
-`python -m pip install django`  
-`python -m pip install pandas`  
-`python -m pip install python-rake`  
-`python -m pip install scikit-learn`  
-`python -m pip install psycopg2`  
-`python -m pip install django-crispy-forms`  
-`python -m pip install pylint-django` [Link](https://stackoverflow.com/questions/45135263/class-has-no-objects-member)  
-`python -m pip install rake_nltk`  
+1. list page of courses
+2. detail page of course
+3. info page of staff
+4. info page of student
+5. course progress of student
+6. course recommendation for student
+## Dependencies
+- Save dependancies to a file
+`pip freeze > requirement_file.txt`  
+- Install all dependancies in the file
+`pip install -r requirement_file.txt`  
+- List of major dependencies
+`pip install django`  
+`pip install pandas`  
+`pip install python-rake`  
+`pip install scikit-learn`  
+`pip install psycopg2`  
+`pip install django-crispy-forms`  
+`pip install pylint-django` [Link](https://stackoverflow.com/questions/45135263/class-has-no-objects-member)  
+`pip install rake_nltk`  
 ## Initial project
 `django startproject elearning`
 ## Initial Application
@@ -39,7 +42,7 @@ http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/admin test account
 3. migrate models using commands as below  
 `python manage.py makemigrations`  
 `python manage.py migrate`  
-### Admin Page
+## Administration
 `python manage.py migrate`  
 `python manage.py createsuperuser`
 ### Migrate to PostgreSQL - ElephantSQL
