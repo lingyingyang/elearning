@@ -31,7 +31,7 @@ def courses_list(request):
         base_url = '?page='
     else:
         course_list = list(Subject.objects.filter(
-            name__icontains=filter_str).values())
+            name__icontains=filter_str))
         base_url = '?filter_str=' + filter_str + '&page='
 
     # Pagination

@@ -39,7 +39,7 @@ def teacher(request):
         base_url = '?page='
     else:
         lecturer_list = list(Lecturer.objects.filter(
-            account__username__icontains=filter_str).values())
+            account__username__icontains=filter_str))
         base_url = '?filter_str=' + filter_str + '&page='
 
     title_list = ["Vice Chancellor", "Pro Chancellor", "Aerobics head", "Vice Chancellor",
