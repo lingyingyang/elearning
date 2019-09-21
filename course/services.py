@@ -9,7 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from users.models import Student
 
-from .models import Subject, Enrollment
+from .models import Enrollment, Subject
 
 
 def get_recommmend_list(user):
@@ -21,7 +21,7 @@ def get_recommmend_list(user):
         if subject_list.count() < 1:
             recommmend_list = get_random_list()
         else:
-            recommmend_list = get_from_cb_by_subjectId(subject_list)
+            recommmend_list = get_cb_list(subject_list)
     else:
         # unauthenticated user random 10 recommended list
         recommmend_list = get_random_list()
@@ -36,7 +36,7 @@ def get_random_list():
     return context
 
 
-def get_from_cb_by_subjectId(subject_list):
+def get_cb_list(subject_list):
     df = DataFrame(list(Subject.objects.values('name', 'category__name')))
 
     # Data cleaning
@@ -117,6 +117,7 @@ def recommendations(subject_list, df, cosine_sim):
     evaluation()
     return recommended_subjects
 
+
 def evaluation():
     print("=====================This is evaluation====================")
     subject_list = get_random_list()
@@ -196,4 +197,13 @@ def evaluation():
 
 
 
+
+
+
+def get_enrolled_list(userId):
+ 
+    current_student = Student.objects.get(account=userId)
+    enrolled_course_list = Enrollment.objects.filter(
+        student=current_student.id)
+    return enrolled_course_list
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load customized_filter %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'dashboard/css/dashboard-style.css' %}">
@@ -100,7 +101,7 @@
                     <a href="{% url 'courses-single' item.subject.id %}">
                         {{ item.subject.name }}
                     </a>
-                    <span class="fc666 data">02-23</span>
+                    <span class="fc666 data">{{ item.status | multiply:20 }}%</span>
                 </li>
                 {% endfor %}
             </ul>

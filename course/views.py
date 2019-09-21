@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 
@@ -75,6 +75,13 @@ def course_single(request, course_id):
     #course = Course.objects.get(pk=course_id);
     course = get_object_or_404(Subject, pk=course_id)
 
+    # check if enrolled this subject if user has logined
+    is_enrolled = False
+    if request.user.is_authenticated:  # atuthenticated user
+        enrolled_course_list = get_enrolled_list(request.user.id)
+        if enrolled_course_list.filter(subject=course_id) is not None:
+            is_enrolled = True
+
     # get cb list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
@@ -86,9 +93,25 @@ def course_single(request, course_id):
     context = {
         'courses_page': 'active',
         'course': course,
-        'recommended_courses': random_items
+        'recommended_courses': random_items,
+        'is_enrolled': is_enrolled
     }
     return render(request, 'courses-single.html', context)
+
+
+@login_required
+def course_crud(request):
+    """
+    POST: enrolling course
+    DELETE: dismiss course
+    """
+    if request.method == 'POST':
+        print("=====course_crud post")
+        pass
+    elif request.method == 'DELETE':
+        print("=====course_crud delete")
+        pass
+    return redirect('course-home')
 
 
 @login_required
@@ -100,9 +123,7 @@ def course_progress(request):
         request.session['recommmend_list'] = recommmend_list
 
     # get enrolled subject list
-    current_student = Student.objects.get(account=request.user.id)
-    enrolled_course_list = Enrollment.objects.filter(
-        student=current_student.id)
+    enrolled_course_list = get_enrolled_list(request.user.id)
     remain_course_list = enrolled_course_list[2:None]
     enrolled_course0 = enrolled_course_list[0]
     enrolled_course1 = enrolled_course_list[1]
@@ -118,7 +139,7 @@ def course_progress(request):
 
 
 def cbtest(request, subject):
-    context = get_from_cb_by_subjectId(subject)
+    context = get_cb_list(subject)
 
     # return HttpResponse('<h1>Hello</h1>')
     return JsonResponse(context, safe=False)
