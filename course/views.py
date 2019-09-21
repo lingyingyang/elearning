@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
@@ -8,6 +9,7 @@ from django.views.decorators.vary import vary_on_cookie
 
 from .models import Enrollment, Subject
 from .services import *
+from .forms import CourseEnrollForm
 
 
 def home(request):
@@ -79,7 +81,7 @@ def course_single(request, course_id):
     is_enrolled = False
     if request.user.is_authenticated:  # atuthenticated user
         enrolled_course_list = get_enrolled_list(request.user.id)
-        if enrolled_course_list.filter(subject=course_id) is not None:
+        if len(enrolled_course_list.filter(subject=course_id)) is not 0:
             is_enrolled = True
 
     # get cb list
@@ -100,40 +102,85 @@ def course_single(request, course_id):
 
 
 @login_required
-def course_crud(request):
+def course_enroll(request):
     """
-    POST: enrolling course
-    DELETE: dismiss course
+    1. Enrolling course
+    2. Refreshing recommendation course list by deleting request.session['recommmend_list']
     """
     if request.method == 'POST':
-        print("=====course_crud post")
-        pass
-    elif request.method == 'DELETE':
+        current_student = Student.objects.get(account=request.user.id)
+        form = CourseEnrollForm(request.POST)
+        if form.is_valid():
+            form.instance.student = current_student
+            form.instance.status = 1
+            print("==========form.instance=========")
+            print(form.instance)
+            form.save()
+            del request.session['recommmend_list']
+            messages.success(request, 'You have enrolled the subject.')
+        else:
+            messages.error(request, form.errors)
+        
+    
+    return redirect('course-progress')
+
+
+@login_required
+def course_dismiss(request):
+    """
+    Dismissing course
+    """
+    if request.method == 'POST':
+        messages.success(request, 'You have dismissed the subject.')
         print("=====course_crud delete")
         pass
-    return redirect('course-home')
+    return redirect('course-progress')
 
 
 @login_required
 def course_progress(request):
+    """
+    Display 
+    1. content-based recommmended course list
+    2. enrolled course list
+    """
     # get cb list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
         recommmend_list = get_recommmend_list(request.user)
         request.session['recommmend_list'] = recommmend_list
+    recommmend_list = recommmend_list[0:4]
 
     # get enrolled subject list
     enrolled_course_list = get_enrolled_list(request.user.id)
-    remain_course_list = enrolled_course_list[2:None]
-    enrolled_course0 = enrolled_course_list[0]
-    enrolled_course1 = enrolled_course_list[1]
-
+    enrolled_course0 = []
+    enrolled_course1 = []
+    remain_course_list = []
+    has_enrolled_course0 = False
+    has_enrolled_course1 = False
+    has_enrolled_course_remain = False
+    list_size = len(enrolled_course_list)
+    if list_size > 0:
+        enrolled_course0 = enrolled_course_list[0]
+        has_enrolled_course0 = True
+    if list_size > 1:
+        enrolled_course1 = enrolled_course_list[1]
+        has_enrolled_course1 = True
+    if list_size > 2:
+        remain_course_list = enrolled_course_list[2:None]
+        remain_course_list = remain_course_list[0:7]
+        has_enrolled_course_remain = True
+    
+    
     context = {
         'courses_progress_page': 'active',
-        'recommended_courses_cb': recommmend_list[0:4],
+        'recommended_courses_cb': recommmend_list,
         'enrolled_course0': enrolled_course0,
         'enrolled_course1': enrolled_course1,
-        'remain_course_list': remain_course_list[0:7]
+        'remain_course_list': remain_course_list,
+        'has_enrolled_course0': has_enrolled_course0,
+        'has_enrolled_course1': has_enrolled_course1,
+        'has_enrolled_course_remain': has_enrolled_course_remain
     }
     return render(request, 'courses-progress.html', context)
 

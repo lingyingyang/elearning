@@ -390,7 +390,7 @@
                                     <li><i class="fa fa-user-o"></i>Students :  <span>100</span></li>
                                 </ul>
                                 {% if user.is_authenticated and is_enrolled %}
-                                <form action="{% url 'courses-crud' %}" method="POST">
+                                <form action="{% url 'course-dismiss' %}" method="POST">
                                     {% csrf_token %}
                                     <div class="price-button pt-10">
                                         <span>Enrolled</span>
@@ -398,8 +398,9 @@
                                     </div>
                                 </form>
                                 {% else %}
-                                <form action="{% url 'courses-crud' %}" method="DELETE">
+                                <form action="{% url 'course-enroll' %}" method="POST">
                                     {% csrf_token %}
+                                    <input type="hidden" name="subject" value="{{ course.id }}"/>
                                     <div class="price-button pt-10">
                                         <span>Remain : <b>{% random_int 100 %}</b></span>
                                         <button type="submit" class="main-btn">Enroll Now</a>

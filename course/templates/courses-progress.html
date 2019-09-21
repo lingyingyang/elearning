@@ -36,77 +36,85 @@
 <!-- 公告 start -->
 <section class="areaList explosion mt-60">
     <div class="container clearfix">
+        {% if has_enrolled_course0 %}
         <div class="row">
-        <!-- start -->
-        <aside class="fl areaType bgWhite newer">
-            <div class="areaName">
-                <h4>{{ enrolled_course0.subject.name }}</h4>
-                <a class="link_t link999" href="{% url 'courses-single' enrolled_course0.subject.id %}">info&gt;</a>
-            </div>
-            <div class="clearfix">
-                <p class="notice fl">
-                    Section xx
-                </p>
-                <div class="fr detail">
-                    <div class="rateInfo">
-                        <span class="rate fcDeepRed"><em>1h</em>left</span>
-                        <span class="rateNotice fc666">P r o c e s s</span>
-                    </div>
-                    <p class="fc999">
-                        Already
-                        <em class="fcDeepRed">7</em> h
-                        <em class="fcDeepRed">40</em> min
-                    </p>
+            <!-- start -->
+            <aside class="fl areaType bgWhite newer">
+                <div class="areaName">
+                    <h4>{{ enrolled_course0.subject.name }}</h4>
+                    <a class="link_t link999" href="{% url 'courses-single' enrolled_course0.subject.id %}">info&gt;</a>
                 </div>
-            </div>
-            <a class="link_c link333" href="{% url 'courses-single' enrolled_course0.subject.id %}">go ahead &gt;</a>
-        </aside>
-        <!--end -->
-        <!-- start -->
-        <aside class="fl areaType bgWhite boom">
-            <div class="areaName">
-                <h4>{{ enrolled_course1.subject.name }}</h4>
-                <a class="link_t link999" href="{% url 'courses-single' enrolled_course1.subject.id %}">info &gt;</a>
-            </div>
-            <div class="clearfix">
-                <div class="detail">
-                    <div class="rateInfo">
-                        <p>
-                            Section xx
+                <div class="clearfix">
+                    <p class="notice fl">
+                        Section xx
+                    </p>
+                    <div class="fr detail">
+                        <div class="rateInfo">
+                            <span class="rate fcDeepRed"><em>1h</em>left</span>
+                            <span class="rateNotice fc666">P r o c e s s</span>
+                        </div>
+                        <p class="fc999">
+                            Already
+                            <em class="fcDeepRed">7</em> h
+                            <em class="fcDeepRed">40</em> min
                         </p>
-                        <span class="rate fcDeepRed"><em>34</em>h </span>
-                        <span class="rate fcDeepRed"><em>24</em>min</span>
-                        <div class="pgSpeed">
-                            <span class="pgLine" data-speed="1">
-                                <span class="bgRed" style="width:30%"></span>
-                            </span>
-                            <span class="fcRed pgText"><em>30</em>%</span>
+                    </div>
+                </div>
+                <a class="link_c link333" href="{% url 'courses-single' enrolled_course0.subject.id %}">go ahead &gt;</a>
+            </aside>
+            <!--end -->
+            <!-- start -->
+            {% if has_enrolled_course1 %}
+            <aside class="fl areaType bgWhite boom">
+                <div class="areaName">
+                    <h4>{{ enrolled_course1.subject.name }}</h4>
+                    <a class="link_t link999" href="{% url 'courses-single' enrolled_course1.subject.id %}">info &gt;</a>
+                </div>
+                <div class="clearfix">
+                    <div class="detail">
+                        <div class="rateInfo">
+                            <p>
+                                Section xx
+                            </p>
+                            <span class="rate fcDeepRed"><em>34</em>h </span>
+                            <span class="rate fcDeepRed"><em>24</em>min</span>
+                            <div class="pgSpeed">
+                                <span class="pgLine" data-speed="1">
+                                    <span class="bgRed" style="width:30%"></span>
+                                </span>
+                                <span class="fcRed pgText"><em>30</em>%</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="goInvest">
+                        <a href="#"></a>
+                    </div>
                 </div>
-                <div class="goInvest">
-                    <a href="#"></a>
+            </aside>
+            {% endif %}
+            <!-- end -->
+            {% if has_enrolled_course_remain %}
+            <aside class="fl areaType bgWhite noticeList">
+                <div class="areaName">
+                    <h4>Enrolled Subject List</h4>
+                    <a class="link_t link999" href="#">info&gt;</a>
                 </div>
-            </div>
-        </aside>
-        <!-- end -->
-        <aside class="fl areaType bgWhite noticeList">
-            <div class="areaName">
-                <h4>Enrolled Subject List</h4>
-                <a class="link_t link999" href="#">info&gt;</a>
-            </div>
-            <ul class="clearfix nList cgNotice">
-                {% for item in remain_course_list %}
-                <li>
-                    <a href="{% url 'courses-single' item.subject.id %}">
-                        {{ item.subject.name }}
-                    </a>
-                    <span class="fc666 data">{{ item.status | multiply:20 }}%</span>
-                </li>
-                {% endfor %}
-            </ul>
-        </aside>
+                <ul class="clearfix nList cgNotice">
+                    {% for item in remain_course_list %}
+                    <li>
+                        <a href="{% url 'courses-single' item.subject.id %}">
+                            {{ item.subject.name }}
+                        </a>
+                        <span class="fc666 data">{{ item.status | multiply:20 }}%</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </aside>
+            {% endif %}
         </div>
+        {% else %}
+        <div class="h2">You has not enrolled any course!</div>
+        {% endif %}
     </div>
 </section>
 <!-- end -->
