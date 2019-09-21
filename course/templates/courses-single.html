@@ -389,10 +389,23 @@
                                     <li><i class="fa fa-beer"></i>Quizzes :  <span>05</span></li>
                                     <li><i class="fa fa-user-o"></i>Students :  <span>100</span></li>
                                 </ul>
-                                <div class="price-button pt-10">
-                                    <span>Price : <b>$25</b></span>
-                                    <a href="#" class="main-btn">Enroll Now</a>
-                                </div>
+                                {% if user.is_authenticated and is_enrolled %}
+                                <form action="{% url 'courses-crud' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="price-button pt-10">
+                                        <span>Enrolled</span>
+                                        <button type="submit" class="main-btn">Dismiss Now</a>
+                                    </div>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'courses-crud' %}" method="DELETE">
+                                    {% csrf_token %}
+                                    <div class="price-button pt-10">
+                                        <span>Remain : <b>{% random_int 100 %}</b></span>
+                                        <button type="submit" class="main-btn">Enroll Now</a>
+                                    </div>
+                                </form>
+                                {% endif %}
                             </div> <!-- course features -->
                         </div>
                         <div class="col-lg-12 col-md-6">
