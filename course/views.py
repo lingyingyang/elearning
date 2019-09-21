@@ -7,9 +7,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 
+from .forms import CourseDismissForm, CourseEnrollForm
 from .models import Enrollment, Subject
 from .services import *
-from .forms import CourseEnrollForm
 
 
 def home(request):
@@ -106,6 +106,7 @@ def course_enroll(request):
     """
     1. Enrolling course
     2. Refreshing recommendation course list by deleting request.session['recommmend_list']
+    3. Message either success or error
     """
     if request.method == 'POST':
         current_student = Student.objects.get(account=request.user.id)
@@ -120,20 +121,29 @@ def course_enroll(request):
             messages.success(request, 'You have enrolled the subject.')
         else:
             messages.error(request, form.errors)
-        
-    
+
     return redirect('course-progress')
 
 
 @login_required
 def course_dismiss(request):
     """
-    Dismissing course
+    1. Dismissing course
+    2. Refreshing recommendation course list by deleting request.session['recommmend_list']
+    3. Message either success or error
     """
     if request.method == 'POST':
-        messages.success(request, 'You have dismissed the subject.')
-        print("=====course_crud delete")
-        pass
+        current_student = Student.objects.get(account=request.user.id)
+        form = CourseDismissForm(request.POST)
+        if form.is_valid():
+            e = Enrollment.objects.filter(
+                subject=form.instance.subject, student=current_student)
+            e.delete()
+            del request.session['recommmend_list']
+            messages.success(request, 'You have dismissed the subject.')
+        else:
+            messages.error(request, form.errors)
+
     return redirect('course-progress')
 
 
@@ -170,8 +180,7 @@ def course_progress(request):
         remain_course_list = enrolled_course_list[2:None]
         remain_course_list = remain_course_list[0:7]
         has_enrolled_course_remain = True
-    
-    
+
     context = {
         'courses_progress_page': 'active',
         'recommended_courses_cb': recommmend_list,

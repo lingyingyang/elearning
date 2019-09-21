@@ -9,3 +9,11 @@ class CourseEnrollForm(forms.ModelForm):
     class Meta:
         model = Enrollment
         fields = ['subject', 'student', 'status']
+
+
+class CourseDismissForm(forms.ModelForm):
+    student = forms.IntegerField(required=False)
+
+    class Meta:
+        model = Enrollment
+        fields = ['subject', 'student']

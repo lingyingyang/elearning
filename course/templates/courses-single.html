@@ -392,6 +392,7 @@
                                 {% if user.is_authenticated and is_enrolled %}
                                 <form action="{% url 'course-dismiss' %}" method="POST">
                                     {% csrf_token %}
+                                    <input type="hidden" name="subject" value="{{ course.id }}"/>
                                     <div class="price-button pt-10">
                                         <span>Enrolled</span>
                                         <button type="submit" class="main-btn">Dismiss Now</a>
