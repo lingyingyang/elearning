@@ -99,22 +99,23 @@ def recommendations(subject_list, df, cosine_sim):
     print("=====================one pd series======================")
     print(score_series)
 
-    # select top 10 recommended subjects that are not in the enrolled subject list 
+    # select top 10 recommended subjects that are not in the enrolled subject list
+    real_sims = []
     for items in score_series.iteritems():
         if len(recommended_subjects) > 9:
             break
         indx = items[0]
+        real_sim = items[1]
         if indx is not enrolledIndex:
             subjectId = indx + 1
             if subjectId not in subject_list:
                 recommended_subjects.append(subjectId)
+                real_sims.append(real_sim)
+    
+    print("======real_sim=====")
+    print(real_sims)
 
-    # top_10_indexes = list(score_series.iloc[1:11].index)
-
-    # populating the list with the ids of the best 10 matching subjects
-    # for i in top_10_indexes:
-    #     recommended_subjects.append(list(df.index)[i])
-    evaluation()
+    # evaluation()
     return recommended_subjects
 
 
@@ -122,7 +123,7 @@ def evaluation():
     print("=====================This is evaluation====================")
     subject_list = get_random_list()
     print(subject_list)
-    recommmend_list = get_from_cb_by_subjectId(subject_list)
+    recommmend_list = get_cb_list(subject_list)
 
     df = DataFrame(list(Subject.objects.values('name', 'category__name')))
 
@@ -187,17 +188,8 @@ def evaluation():
             if subjectId not in subject_list:
                 recommended_subjects.append(subjectId)
                 real_sims.append(real_sim)
-    # top_10_indexes = list(score_series.iloc[1:11].index)
-
-    # populating the list with the ids of the best 10 matching subjects
-    # for i in top_10_indexes:
-    #     recommended_subjects.append(list(df.index)[i])
     
-    return recommended_subjects, real_sims
-
-
-
-
+    # return recommended_subjects, real_sims
 
 
 def get_enrolled_list(userId):
