@@ -108,6 +108,9 @@
                         <span class="fc666 data">{{ item.status | multiply:20 }}%</span>
                     </li>
                     {% endfor %}
+                    {% if has_more %}
+                    <li><a href="#">More...</a></li>
+                    {% endif %}
                 </ul>
             </aside>
             {% endif %}

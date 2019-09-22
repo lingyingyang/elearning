@@ -169,6 +169,7 @@ def course_progress(request):
     has_enrolled_course0 = False
     has_enrolled_course1 = False
     has_enrolled_course_remain = False
+    has_more = False
     list_size = len(enrolled_course_list)
     if list_size > 0:
         enrolled_course0 = enrolled_course_list[0]
@@ -180,6 +181,8 @@ def course_progress(request):
         remain_course_list = enrolled_course_list[2:None]
         remain_course_list = remain_course_list[0:7]
         has_enrolled_course_remain = True
+    if list_size > 9: # show more option
+        has_more = True
 
     context = {
         'courses_progress_page': 'active',
@@ -189,7 +192,8 @@ def course_progress(request):
         'remain_course_list': remain_course_list,
         'has_enrolled_course0': has_enrolled_course0,
         'has_enrolled_course1': has_enrolled_course1,
-        'has_enrolled_course_remain': has_enrolled_course_remain
+        'has_enrolled_course_remain': has_enrolled_course_remain,
+        'has_more': has_more
     }
     return render(request, 'courses-progress.html', context)
 
