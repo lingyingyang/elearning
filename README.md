@@ -43,7 +43,7 @@ http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/admin test account
 `python manage.py makemigrations`  
 `python manage.py migrate`  
 ## ERD
-![Image of ERD](https://github.com/lingyingyang/elearning/tree/master/resources/ERD.svg)
+![Image of ERD](https://github.com/lingyingyang/elearning/tree/master/resources/ERD.jpg)
 ## Administration
 `python manage.py migrate`  
 `python manage.py createsuperuser`
