@@ -57,6 +57,21 @@ class Subject(models.Model):
         return f'Subject {self.id} | Name: {self.name}'
 
 
+class SubjectRating(models.Model):
+    subject = models.ForeignKey(Subject, models.DO_NOTHING, db_column='subject', blank=True, null=True)
+    student = models.ForeignKey('users.Student', models.DO_NOTHING, db_column='student', blank=True, null=True)
+    rating = models.IntegerField(blank=True, null=True)
+    commence = models.TextField(blank=True, null=True)
+    timestamp = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'subject_rating'
+
+    def __str__(self):
+        return f'Student {self.student.account.username} | Subject: {self.subject.name} | Rating: {self.rating}'
+
+
 class Enrollment(models.Model):
     subject = models.ForeignKey('Subject', models.DO_NOTHING, db_column='subject')
     student = models.ForeignKey('users.Student', models.DO_NOTHING, db_column='student')
