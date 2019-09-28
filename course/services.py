@@ -51,12 +51,15 @@ def _from_content_based(subject_list):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     print("=====================cosine_sim======================")
     print(cosine_sim)
+
     rd_list = _recommendations(subject_list, df, cosine_sim)
     print("=====================rd======================")
     print(rd_list)
 
     recommendations = _retrieve_recommendations_and_sort_by(rd_list)
 
+    print("===============Rating List===================")
+    
     return recommendations
 
 
@@ -92,7 +95,7 @@ def _recommendations(subject_list, df, cosine_sim):
 
     # gettin the index of the subject that matches the id
     idx = indices[indices == enrolledIndex].index[0]
-
+    
     # creating a Series with the similarity scores in descending order
     score_series = pd.Series(cosine_sim[idx]).sort_values(ascending=False)
     print("=====================one pd series======================")
@@ -121,7 +124,10 @@ def _recommendations(subject_list, df, cosine_sim):
                     average_rating = 0
                 sum_of_product += real_sim * average_rating
                 sum_of_sims+=real_sim
-                result = sum_of_product / sum_of_sims
+                if(sum_of_sims > 0):
+                    result = sum_of_product / sum_of_sims
+                else:
+                    result = 0
 
     print("======real_sim=====")
     print(real_sims)
