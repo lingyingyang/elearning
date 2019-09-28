@@ -9,7 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from users.models import Student
 
-from .models import Enrollment, Subject
+from .models import Enrollment, Subject, SubjectRating
 
 
 def get_recommmendations(user):
@@ -100,9 +100,12 @@ def _recommendations(subject_list, df, cosine_sim):
 
     # select top 10 recommended subjects that are not in the enrolled subject list
     real_sims = []
+    sum_of_product = 0
+    sum_of_sims = 0
     for items in score_series.iteritems():
         if len(recommended_subjects) > 9:
             break
+        print(items)
         indx = items[0]
         real_sim = items[1]
         if indx is not enrolledIndex:
@@ -110,11 +113,20 @@ def _recommendations(subject_list, df, cosine_sim):
             if subjectId not in subject_list:
                 recommended_subjects.append(subjectId)
                 real_sims.append(real_sim)
+                subject_name = Subject.objects.get(id=subjectId)
+                rating_list = SubjectRating.objects.filter(subject = subject_name).values_list('rating', flat=True)
+                if(rating_list.count() > 0):
+                    average_rating = sum(rating_list) / rating_list.count()
+                else:
+                    average_rating = 0
+                sum_of_product += real_sim * average_rating
+                sum_of_sims+=real_sim
 
     print("======real_sim=====")
     print(real_sims)
-
-    # evaluation()
+    print("=====sum of product=====")
+    print(sum_of_product)
+    #evaluation()
     return recommended_subjects
 
 
