@@ -23,6 +23,7 @@ def get_recommmendations(user):
 
 def _validate(user):
     is_valid = False
+    enrolled_subjects = []
     if user.is_authenticated:  # atuthenticated user
         enrolled_subjects = get_enrolled_subjects(user.id).values_list('subject', flat=True)
         if enrolled_subjects.count() >= 1:
