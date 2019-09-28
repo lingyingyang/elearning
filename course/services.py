@@ -121,11 +121,12 @@ def _recommendations(subject_list, df, cosine_sim):
                     average_rating = 0
                 sum_of_product += real_sim * average_rating
                 sum_of_sims+=real_sim
+                result = sum_of_product / sum_of_sims
 
     print("======real_sim=====")
     print(real_sims)
-    print("=====sum of product=====")
-    print(sum_of_product)
+    print("=====Result=====")
+    print(result)
     #evaluation()
     return recommended_subjects
 
