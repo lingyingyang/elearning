@@ -69,7 +69,7 @@ class SubjectRating(models.Model):
         db_table = 'subject_rating'
 
     def __str__(self):
-        return f'Student {self.student.account.username} | Subject: {self.subject.name} | Rating: {self.rating}'
+        return f'Subject: {self.subject.name} | Student {self.student.account.username} | Rating: {self.rating}'
 
 
 class Enrollment(models.Model):

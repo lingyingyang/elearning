@@ -9,7 +9,7 @@ from django.views.decorators.vary import vary_on_cookie
 
 from .forms import CourseDismissForm, CourseEnrollForm
 from .models import Enrollment, Subject
-from .services import *
+from .services import get_enrolled_subjects, get_recommmendations
 
 
 def home(request):
@@ -57,7 +57,7 @@ def courses_cb(request):
     # get cb list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
-        recommmend_list = get_recommmend_list(request.user)
+        recommmend_list = get_recommmendations(request.user)
         request.session['recommmend_list'] = recommmend_list
 
     # Pagination
@@ -80,14 +80,14 @@ def course_single(request, course_id):
     # check if enrolled this subject if user has logined
     is_enrolled = False
     if request.user.is_authenticated:  # atuthenticated user
-        enrolled_course_list = get_enrolled_list(request.user.id)
+        enrolled_course_list = get_enrolled_subjects(request.user.id)
         if len(enrolled_course_list.filter(subject=course_id)) is not 0:
             is_enrolled = True
 
     # get cb list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
-        recommmend_list = get_recommmend_list(request.user)
+        recommmend_list = get_recommmendations(request.user)
         request.session['recommmend_list'] = recommmend_list
 
     random_items = [recommmend_list[random.randrange(len(recommmend_list))]
@@ -157,12 +157,12 @@ def course_progress(request):
     # get cb list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
-        recommmend_list = get_recommmend_list(request.user)
+        recommmend_list = get_recommmendations(request.user)
         request.session['recommmend_list'] = recommmend_list
     recommmend_list = recommmend_list[0:4]
 
     # get enrolled subject list
-    enrolled_course_list = get_enrolled_list(request.user.id)
+    enrolled_course_list = get_enrolled_subjects(request.user.id)
     enrolled_course0 = []
     enrolled_course1 = []
     remain_course_list = []
@@ -181,7 +181,7 @@ def course_progress(request):
         remain_course_list = enrolled_course_list[2:None]
         remain_course_list = remain_course_list[0:7]
         has_enrolled_course_remain = True
-    if list_size > 9: # show more option
+    if list_size > 9:  # show more option
         has_more = True
 
     context = {
@@ -196,10 +196,3 @@ def course_progress(request):
         'has_more': has_more
     }
     return render(request, 'courses-progress.html', context)
-
-
-def cbtest(request, subject):
-    context = get_cb_list(subject)
-
-    # return HttpResponse('<h1>Hello</h1>')
-    return JsonResponse(context, safe=False)

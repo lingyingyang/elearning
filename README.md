@@ -51,10 +51,6 @@ http://ec2-13-239-55-207.ap-southeast-2.compute.amazonaws.com/admin test account
 1. install `python -m pip install psycopg2`
 2. migration `python manage.py migrate`
 3. create admin superuser  
-# Content-based filtering algorithm
-API: http://127.0.0.1:8000/cbtest/0   
-- 0 = subject id
-- result = a list of recommender subject based on this subject id in a similarity order
 # Issues
 ## Populating SQL script into a migration step
 ### Method 1
