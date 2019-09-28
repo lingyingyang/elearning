@@ -11,6 +11,7 @@ from django.views.decorators.vary import vary_on_cookie
 
 from .forms import CourseDismissForm, CourseEnrollForm
 from .models import Enrollment, Subject
+from users.models import Student
 from .services import get_enrolled_subjects, get_recommmendations
 
 

@@ -24,7 +24,7 @@ def get_recommmendations(user):
 def _validate(user):
     is_valid = False
     if user.is_authenticated:  # atuthenticated user
-        enrolled_subjects = get_enrolled_subjects(user.id)
+        enrolled_subjects = get_enrolled_subjects(user.id).values_list('subject', flat=True)
         if enrolled_subjects.count() >= 1:
             is_valid = True
     return is_valid, enrolled_subjects
@@ -71,8 +71,7 @@ def _data_clean(dataframe, subject_list):
         name_keywords_str = ' '.join(list(keywords_dict.keys()))
         row['name_keywords'] = name_keywords_str
         if index+1 in subject_list:
-            enrolled_key_words += name_keywords_str + \
-                " " + row['category__name'] + " "
+            enrolled_key_words += name_keywords_str + " " + row['category__name'] + " "
     print("===enrolled_key_words==="+enrolled_key_words)
     print(dataframe.head())
     dataframe['key_words'] = dataframe['name_keywords'] + ' ' + dataframe['category__name'].map(str)
