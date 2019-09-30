@@ -52,14 +52,24 @@ def _from_content_based(subject_list):
     print("=====================cosine_sim======================")
     print(cosine_sim)
 
-    rd_list = _recommendations(subject_list, df, cosine_sim)
+    rd_list, result = _recommendations(subject_list, df, cosine_sim)
     print("=====================rd======================")
     print(rd_list)
 
     recommendations = _retrieve_recommendations_and_sort_by(rd_list)
 
     print("===============Rating List===================")
-    
+    index=0
+    single_list = []
+    rating_list = []
+    for subject in rd_list:
+        single_list.append(rd_list[index]) 
+        tmp_list, rating = _recommendations(single_list, df, cosine_sim)
+        rating_list.append(rating)
+        index +=1
+    print(rating_list)
+    rating_series = pd.Series(rd_list, index=rating_list)
+    print(rating_series.sort_index())
     return recommendations
 
 
@@ -133,7 +143,7 @@ def _recommendations(subject_list, df, cosine_sim):
     print("=====Result=====")
     print(result)
     #evaluation()
-    return recommended_subjects
+    return recommended_subjects,result
 
 
 def _retrieve_recommendations_and_sort_by(subject_list):
