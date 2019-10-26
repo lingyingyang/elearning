@@ -9,9 +9,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 
+from users.models import Student
+
+from .cfService import get_recommmendations_cf
 from .forms import CourseDismissForm, CourseEnrollForm
 from .models import Enrollment, Subject
-from users.models import Student
 from .services import get_enrolled_subjects, get_recommmendations
 
 
@@ -57,7 +59,7 @@ def courses_list(request):
 @cache_page(60 * 15)
 @vary_on_cookie
 def courses_cb(request):
-    # get cb list
+    # get content-based filtering list
     recommmend_list = request.session.get('recommmend_list')
     if recommmend_list is None:
         recommmend_list = get_recommmendations(request.user)
@@ -74,6 +76,28 @@ def courses_cb(request):
         'courses_size': recommmend_list.__len__
     }
     return render(request, 'courses-cb.html', context)
+
+
+@cache_page(60 * 15)
+@vary_on_cookie
+def courses_cf(request):
+    # get content-based filtering list
+    recommmend_cf_list = request.session.get('recommmend_cf_list')
+    if recommmend_cf_list is None:
+        recommmend_cf_list = get_recommmendations_cf(request.user)
+        request.session['recommmend_cf_list'] = recommmend_cf_list
+
+    # Pagination
+    paginator = Paginator(recommmend_cf_list, 6)
+    page = request.GET.get('page')
+    courses = paginator.get_page(page)
+
+    context = {
+        'courses_page': 'active',
+        'courses': courses,
+        'courses_size': recommmend_cf_list.__len__
+    }
+    return render(request, 'courses-cf.html', context)
 
 
 def course_single(request, course_id):
@@ -120,7 +144,7 @@ def course_enroll(request):
             print("==========form.instance=========")
             print(form.instance)
             form.save()
-            del request.session['recommmend_list']
+            _refresh_session(request)
             messages.success(request, 'You have enrolled the subject.')
         else:
             messages.error(request, form.errors)
@@ -142,7 +166,7 @@ def course_dismiss(request):
             e = Enrollment.objects.filter(
                 subject=form.instance.subject, student=current_student)
             e.delete()
-            del request.session['recommmend_list']
+            _refresh_session(request)
             messages.success(request, 'You have dismissed the subject.')
         else:
             messages.error(request, form.errors)
@@ -150,11 +174,17 @@ def course_dismiss(request):
     return redirect('course-progress')
 
 
+def _refresh_session(request):
+    del request.session['recommmend_list']
+    del request.session['recommmend_cf_list']
+
+
 @login_required
 def course_progress(request):
     """
     Display 
-    1. content-based recommmended course list
+    1. content-based filtering recommmended course list
+    2. collaborative filtering recommmended course list
     2. enrolled course list
     """
     # get cb list
@@ -163,6 +193,12 @@ def course_progress(request):
         recommmend_list = get_recommmendations(request.user)
         request.session['recommmend_list'] = recommmend_list
     recommmend_list = recommmend_list[0:4]
+    # get collaborative filtering list
+    recommmend_cf_list = request.session.get('recommmend_cf_list')
+    if recommmend_cf_list is None:
+        recommmend_cf_list = get_recommmendations_cf(request.user)
+        request.session['recommmend_cf_list'] = recommmend_cf_list
+    recommmend_cf_list = recommmend_cf_list[0:4]
 
     # get enrolled subject list
     enrolled_course_list = get_enrolled_subjects(request.user.id)
@@ -190,6 +226,7 @@ def course_progress(request):
     context = {
         'courses_progress_page': 'active',
         'recommended_courses_cb': recommmend_list,
+        'recommended_courses_cf': recommmend_cf_list,
         'enrolled_course0': enrolled_course0,
         'enrolled_course1': enrolled_course1,
         'remain_course_list': remain_course_list,

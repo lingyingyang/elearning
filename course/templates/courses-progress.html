@@ -130,7 +130,7 @@
                     <h4>Recommended Subjects</h4>
                 </div>
                 <p class="notice fc333">
-                    content based
+                    Content-based
                 </p>
                 <span class="link_c link666">more &gt;</span>
             </a>
@@ -167,97 +167,38 @@
 <section class="areaList productList xiaofei">
     <div class="container">
         <div class="listCon bgWhite clearfix row">
-            <a class="fl areaType" href="#">
+            <a class="fl areaType" href="{% url 'course-cf' %}">
                 <div class="areaName">
                     <h4>Recommended Subjects</h4>
                 </div>
                 <p class="notice fc333">
-                    CF
+                    Collaborative Filtering
                 </p>
                 <span class="link_c link666">more &gt;</span>
             </a>
             <article class="fl">
                 <ul class="pList fl">
-                    <li class="bgWhite last">
-                        <a href="#" onclick="addCart('1')">
+                    {% for course in recommended_courses_cf %}
+                    <li class="bgWhite">
+                        <a href="{% url 'courses-single' course.id %}">
                             <div class="hBk">
                             </div>
-                            <h4>$ 40</h4>
+                            <h4>{{ course.name }}</h4>
                             <div class="pContent">
                                 <div class="rateInfo">
-                                    <img src="xxxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed ">
-                                    </span>
+                                    <img src="/static/images/course/cu-{{ forloop.counter }}.jpg" style="margin-top: 20px;width: 115px;height: 78px" alt="">
+                                    <span class="rate fcDeepRed "></span>
                                 </div>
-                                <div class="view">
+                                <div class="view downTimeC">
                                     <span class="link333 link_s">detail</span>
                                 </div>
-                                <span class="icon2"></span>
+                                <!--<span class="icon" style="background:none;"><img src="unpan/blue/src/model1.png" style="height: 100%; width: 100%;"></span>-->
                             </div>
                             <div class="fBk">
                             </div>
                         </a>
                     </li>
-                    <li class="bgWhite last">
-                        <a href="#" onclick="addCart('2')">
-                            <div class="hBk">
-                            </div>
-                            <h4>$ 40</h4>
-                            <div class="pContent">
-                                <div class="rateInfo">
-                                    <img src="xxxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed ">
-                                    </span>
-                                </div>
-                                <div class="view">
-                                    <span class="link333 link_s">detail</span>
-                                </div>
-                                <span class="icon2"></span>
-                            </div>
-                            <div class="fBk">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bgWhite last">
-                        <a href="#" onclick="addCart('4')">
-                            <div class="hBk">
-                            </div>
-                            <h4>$ 40</h4>
-                            <div class="pContent">
-                                <div class="rateInfo">
-                                    <img src="xxxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed ">
-                                    </span>
-                                </div>
-                                <div class="view">
-                                    <span class="link333 link_s">detail</span>
-                                </div>
-                                <span class="icon2"></span>
-                            </div>
-                            <div class="fBk">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bgWhite last">
-                        <a href="#" onclick="addCart('5')">
-                            <div class="hBk">
-                            </div>
-                            <h4>$ 40</h4>
-                            <div class="pContent">
-                                <div class="rateInfo">
-                                    <img src="xxxx" style="width: 115px;height: 115px" alt="">
-                                    <span class="rate fcDeepRed ">
-                                    </span>
-                                </div>
-                                <div class="view">
-                                    <span class="link333 link_s">detail</span>
-                                </div>
-                                <span class="icon2"></span>
-                            </div>
-                            <div class="fBk">
-                            </div>
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </article>
         </div>
